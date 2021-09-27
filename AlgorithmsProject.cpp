@@ -8,6 +8,8 @@ Algorithms Project Code
 #include<cstdlib>
 #include<array>
 
+using namespace std;
+
 int main()
 {
 
