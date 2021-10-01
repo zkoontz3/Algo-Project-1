@@ -1,5 +1,5 @@
 /*
-Zach, Colin, Stephen, and Alex
+Zach, Colin, Stephen, Brad, and Alex
 Dr. Williams
 Algorithms Project Code
 */
