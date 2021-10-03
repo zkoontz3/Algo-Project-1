@@ -22,7 +22,9 @@ int main()
         int x = rand() % 1000;
         randomArray[i] = x;
     }
+}
 
+return 0;
 
     
 //selection sort: Zach Koontz
@@ -94,5 +96,5 @@ void mergeSort(int arr[], int start, int end)
      merge(arr, start, mid, end);
   }
 }
-    return 0;
-}
+    
+
