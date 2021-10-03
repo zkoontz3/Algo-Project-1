@@ -10,6 +10,16 @@ Algorithms Project Code
 
 using namespace std;
 
+//Selection Sort and Merge Sort: Zach Koontz
+void swap(int *x, int *p);
+void selectionSort(int arr[], int n);
+void merge(int arr[], int start, int mid, int end);
+void mergeSort(int arr[], int start, int end);
+
+//Heap Sort: Alex McClellan 
+void heapify(int arr[], int heapSize, int i);
+void heapSort(int arr[], int heapSize);
+
 int main()
 {
     int randomArray[1000];
@@ -101,4 +111,51 @@ void mergeSort(int arr[], int start, int end)
   }
 }
     
+//Heapify Function
+void heapify(int arr[], int heapSize, int i)
+{
+  int largest = i; //Last element becomes root
+  int l = 2 * i + 1; //Left element
+  int r = 2 * i + 2; //Right element
 
+  //Left > Largest Case
+  if (l < heapSize && arr[l] > arr[largest])
+  {
+      largest = l;
+  }
+
+  //Right > Largest Case
+  if (r < heapSize && arr[r] > arr[largest])
+  {
+      largest = r;
+  }
+
+  //If Largest isn't the root
+  if (largest != i)
+  {
+    swap(arr[i], arr[largest]);
+  }
+
+  //Recursive call
+  heapify(arr, heapSize, largest);
+}
+
+//Main Heap Sort Function
+void heapSort(int arr[], int heapSize)
+{
+  //Builds the heap
+  for (int i = heapSize / 2 - 1; i >= 0; i--)
+  {
+    heapify(arr, heapSize, i);
+  }
+
+  //Removes an element from heap
+  for (int i = heapSize - 1; i >= 0; i--)
+  {
+    //Moves root to the end of the array
+    swap(arr[0], arr[i]);
+
+    //Call max heapify on reduced heap
+    heapify(arr, i, 0);
+  }
+}
