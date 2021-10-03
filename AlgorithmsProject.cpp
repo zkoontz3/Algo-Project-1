@@ -16,7 +16,8 @@ void selectionSort(int arr[], int n);
 void merge(int arr[], int start, int mid, int end);
 void mergeSort(int arr[], int start, int end);
 
-//Heap Sort: Alex McClellan 
+//Heap Sort: Alex McClellan
+//Heap Sort functions from GeeksForGeeks.com 
 void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
 
