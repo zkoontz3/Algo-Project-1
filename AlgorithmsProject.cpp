@@ -16,14 +16,15 @@ void selectionSort(int arr[], int n);
 void merge(int arr[], int start, int mid, int end);
 void mergeSort(int arr[], int start, int end);
 
-//Heap Sort: Alex McClellan
+//Heap Sort and Bubble Sort: Alex McClellan
 //Heap Sort functions from GeeksForGeeks.com 
 void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
+void bubbleSort(int arr[], int arraySize);
 
 int main()
 {
-    int randomArray[1000];
+    int randomArray[1000], arraySize, heapSize, n;
 
     //Random Array Generator
     srand(time(0));
@@ -32,7 +33,12 @@ int main()
     {
         int x = rand() % 1000;
         randomArray[i] = x;
+        arraySize++;
     }
+    
+    //Array Size Variables for Functions
+    heapSize = arraySize;
+    n = arraySize;
 }
 
 return 0;
@@ -41,7 +47,7 @@ return 0;
 void swap(int *x, int *p)
 {
     int temp = *x;
-    *p = *p;
+    *x = *p;
     *p = temp;
 }
 
@@ -158,5 +164,25 @@ void heapSort(int arr[], int heapSize)
 
     //Call max heapify on reduced heap
     heapify(arr, i, 0);
+  }
+}
+
+//Bubble Sort
+void bubbleSort(int arr[], int arraySize)
+{
+  int temp;
+
+  for (int i = 0; i < arraySize; i++)
+  {
+      //The Bubble
+      for (int j = 0; j < arraySize; j++)
+      {
+          if (arr[j] > arr[j+1])
+          {
+            temp = arr[j+1];
+            arr[j+1] = arr[j];
+            arr[j] = temp;
+          }
+      }
   }
 }
