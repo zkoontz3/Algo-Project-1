@@ -26,23 +26,27 @@ int main()
 
 return 0;
 
-    
-//selection sort: Zach Koontz
-void selectionSort(int arr[], int n) 
+//Swap function for the selection sort: Zach Koontz
+void swap(int *x, int *p)
 {
-    int i, j, min, tmp;    
-      for (i = 0; i < n - 1; i++) {
-        min = i;
-        for (j = i + 1; j < n; j++)
-          if (arr[j] < arr[min])
-              min = j;
-          if (min != i) {
-              tmp = arr[i];
-              arr[i] = arr[min];
-              arr[min] = tmp;
-    }
-  }
+    int temp = *x;
+    *p = *p;
+    *p = temp;
 }
+
+//selection sort: Zach Koontz
+void selectionSort(int arr[], int n)
+{
+    int i, j, minIndex;
+    for (i = 0; i < n-1; i++)
+    {
+        minIndex = i;
+        for (j = i+1; j < n; j++)
+        if (arr[j] < arr[minIndex])
+            minIndex = j;
+        swap(&arr[minIndex], &arr[i]);
+    }
+}   
 
 //Merge Function: Zach Koontz
 void merge(int arr[], int start, int mid, int end)
