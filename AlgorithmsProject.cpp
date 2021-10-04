@@ -211,3 +211,9 @@ void exchangeSort(int arr[], int z)
         }
     }
 }
+
+//Insertion Sort: Brad 
+void insertionSort()
+{
+    
+}
