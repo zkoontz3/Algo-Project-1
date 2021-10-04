@@ -22,6 +22,10 @@ void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
 void bubbleSort(int arr[], int arraySize);
 
+//exchange: Brad
+//insertion: Stephen 
+//quickSort: Colin McCarrie
+
 int main()
 {
     int randomArray[1000], arraySize, heapSize, n;
