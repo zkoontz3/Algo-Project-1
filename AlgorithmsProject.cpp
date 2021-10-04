@@ -22,8 +22,11 @@ void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
 void bubbleSort(int arr[], int arraySize);
 
-//exchange: Brad
-//insertion: Stephen 
+//exchange: Stephen  
+void exchangeSort(int arr[], int z);
+
+//insertion: Brad 
+
 //quickSort: Colin McCarrie
 
 int main()
@@ -189,4 +192,22 @@ void bubbleSort(int arr[], int arraySize)
           }
       }
   }
+}
+
+//Exchange Sort: Stephen 
+void exchangeSort(int arr[], int z)
+{
+    int length = z;
+    int n;
+    for (int j = 0; j < length-1; j++)
+    {
+        for(n = j+1; n < length; n++)
+        {
+            int temp;
+            if (arr[j] > arr[n]){
+                temp = arr[j];
+                arr[j] = arr[n];
+                arr[n] = temp;}
+        }
+    }
 }
