@@ -37,7 +37,7 @@ void quickSort(int arr[], int low, int high);
 int main()
 {
     int randomArray[1000], arraySize = 0, heapSize, n;
-    float runtime1, runtime2, runtime3;
+    float runtime1, runtime2, runtime3, runtime4;
     struct timeval tstart, tend;
 
     //Random Array Generator
@@ -97,9 +97,20 @@ int main()
     runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
     cout << "Insertion Sort Time: " << runtime3 << endl;
     
+    //Bubble Sort
+    int bubbleList[n];
+    copy(bubbleList, randomArray, n);
+
+    //Bubble Sort: Start Timer
+    gettimeofday(&tstart, NULL);
+    bubbleSort(bubbleList,n);
+
+    //Bubble Sort: End Timer
+    gettimeofday(&tend, NULL);
+    runtime4 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "Bubble Sort Time: " << runtime4 << endl;
+
     return 0;
-
-
 }
 
 //Swap function for the selection sort: Zach Koontz
