@@ -7,6 +7,7 @@ Algorithms Project Code
 #include<iostream>
 #include<cstdlib>
 #include<array>
+#include<sys/time.h>
 
 using namespace std;
 
@@ -36,6 +37,7 @@ void copy(int arrA[], const int arrB[], int z);
 int main()
 {
     int randomArray[1000], arraySize = 0, heapSize, n;
+    struct timeval tstart, tend;
 
     //Random Array Generator
     srand(time(0));
@@ -50,14 +52,25 @@ int main()
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
-    
+
     //Make copies of randomArray to pass same array to functions
-    //Exchange and Insertion sort: Stephen
+    //Exchange sort: Stephen
     int swaps = 0, compares = 0;
     int exgList[n];
     copy(exgList, randomArray, n);
+
+    //Start Timer
+    gettimeofday(&tstart, NULL);
+
     exchangeSort(exgList, n, swaps, compares);
     cout << "List sorted with exchange sort. Compres: " << compares << "Swaps: " << swaps << endl;
+    
+    //End Timer
+    gettimeofday(&tend, NULL);
+    runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "Exchange Sort: " << runtime1;
+
+    //Insertion Sort
     int insList[n];
     copy(insList, randomArray, n);
     insertionSort(insList, n, compares);
