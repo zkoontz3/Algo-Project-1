@@ -7,6 +7,7 @@ Algorithms Project Code
 #include<iostream>
 #include<cstdlib>
 #include<array>
+#include<timercpp>
 
 using namespace std;
 
@@ -46,9 +47,9 @@ int main()
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
-}
 
-return 0;
+    return 0;
+}
 
 //Swap function for the selection sort: Zach Koontz
 void swap(int *x, int *p)
