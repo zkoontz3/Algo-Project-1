@@ -31,6 +31,8 @@ void insertionSort(int arr[], int z, int& compares);
 void copy(int arrA[], const int arrB[], int z);
 
 //quickSort: Colin McCarrie
+int partition (int arr[], int low, int high);
+void quickSort(int arr[], int low, int high);
 
 int main()
 {
@@ -61,7 +63,7 @@ int main()
     gettimeofday(&tstart, NULL);
 
     exchangeSort(exgList, n, swaps, compares);
-    cout << "List sorted with exchange sort. Compres: " << compares << "Swaps: " << swaps << endl;
+    cout << "List sorted with exchange sort. Compares: " << compares << "Swaps: " << swaps << endl;
     
     //End Timer
     gettimeofday(&tend, NULL);
@@ -72,8 +74,12 @@ int main()
     int insList[n];
     copy(insList, randomArray, n);
     insertionSort(insList, n, compares);
-    cout << "List sorted with exchange sort. Compres: " << compares << endl;
+    cout << "List sorted with exchange sort. Compares: " << compares << endl;
 
+    //Quicksort
+    int listOints[n];
+    copy(listOints, randomArray, n);
+    void quickSort(listOints,0, n-1);
     return 0;
 }
 
@@ -268,4 +274,34 @@ void copy(int arrA[], const int arrB[], int z)
 {
     for(int i=0; i < z; i++)
         arrA[i] = arrB[i];
+}
+
+
+//Partition FUNCTION: COLIN
+int partition (int arr[], int low, int high)
+{
+    int pivot = arr[high];   
+    int i = (low - 1);  
+ 
+    for (int j = low; j <= high- 1; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;    
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+ 
+//QUICK SORT FUNCTION: COLIN
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
 }
