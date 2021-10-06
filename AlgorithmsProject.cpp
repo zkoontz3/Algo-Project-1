@@ -181,14 +181,14 @@ int main()
     selectionSort(selectionList,n);
     gettimeofday(&tend, NULL);
     runtime7 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
-    cout << "Selection Sort Time: " << runtime7 << endl;
+    cout << "Selection Sort (Random) Time: " << runtime7 << endl;
 
     //Selection Sort: End Timer
     gettimeofday(&tstart, NULL);
     selectionSort(ptr,n);
     gettimeofday(&tend, NULL);
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
-    cout << "Selection Sort Time: " << runtime14 << endl;
+    cout << "Selection Sort (Almost Sorted) Time: " << runtime14 << endl;
 
     return 0;
 }
