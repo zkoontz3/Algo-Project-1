@@ -24,8 +24,8 @@ void heapSort(int arr[], int heapSize);
 void bubbleSort(int arr[], int arraySize);
 
 //exchange and insertion sort: Stephen  
-void exchangeSort(int arr[], int z, int& swaps, int& compares);
-void insertionSort(int arr[], int z, int& compares);
+void exchangeSort(int arr[], int z, int swaps, int compares);
+void insertionSort(int arr[], int z, int compares);
 
 //Array copy function: Stephen
 void copy(int arrA[], const int arrB[], int z);
@@ -80,7 +80,7 @@ int main()
     //Quicksort
     int listOints[n];
     copy(listOints, randomArray, n);
-    void quickSort(listOints,0, n-1);
+    quickSort(listOints,0, n-1);
     return 0;
 }
 
@@ -230,11 +230,11 @@ void bubbleSort(int arr[], int arraySize)
 }
 
 //Exchange Sort: Stephen 
-void exchangeSort(int arr[], int z, int& swaps, int& compares)
+void exchangeSort(int arr[], int z, int swaps, int compares)
 {
     int length = z;
     int n;
-    int swaps = 0, compares = 0;
+    //int swaps = 0, compares = 0;
     for (int j = 0; j < length-1; j++)
     {
         for(n = j+1; n < length; n++)
@@ -251,10 +251,10 @@ void exchangeSort(int arr[], int z, int& swaps, int& compares)
 }
 
 //Insertion Sort: Stephen 
-void insertionSort(int arr[], int z, int& compares)
+void insertionSort(int arr[], int z, int compares)
 {
     int length = z;
-    int compares = 0;
+    //int compares = 0;
     int i, j, x;
     for(i = 1; i < length; i++)
     {
