@@ -40,7 +40,7 @@ void quickSort(int arr[], int low, int high);
 int main()
 {
     int randomArray[1000], almostSorted[1000], arraySize = 0, heapSize, n;
-    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7;
+    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8;
     struct timeval tstart, tend;
 
     //Random Array Generator
@@ -66,15 +66,21 @@ int main()
     int exgList[n];
     copy(exgList, randomArray, n);
 
-    //Exchange Sort: Start Timer
+    //Exchange Sort: Random
     gettimeofday(&tstart, NULL);
     exchangeSort(exgList, n, swaps, compares);
-    
-    //Exchange Sort: End Timer
     gettimeofday(&tend, NULL);
     cout << "List sorted with exchange sort. Compares: " << compares << "Swaps: " << swaps << endl;
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
     cout << "Exchange Sort Time: " << runtime1 << endl;
+    
+    //Exchange Sort: Almost Sorted
+    gettimeofday(&tstart, NULL);
+    exchangeSort(almostSorted, n, swaps, compares);
+    gettimeofday(&tend, NULL);
+    cout << "List sorted with exchange sort. Compares: " << compares << "Swaps: " << swaps << endl;
+    runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "Exchange Sort Time: " << runtime8 << endl;
 
     //Insertion Sort
     int insList[n];
