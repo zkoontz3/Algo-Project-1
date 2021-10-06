@@ -129,7 +129,7 @@ int main()
 
     //Merge Sort: Start Timer
     gettimeofday(&tstart, NULL);
-    mergeSort(heapList,0,n-1);
+    mergeSort(mergeList,0,n-1);
 
     //Merge Sort: End Timer
     gettimeofday(&tend, NULL);
