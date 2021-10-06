@@ -22,6 +22,7 @@ void mergeSort(int arr[], int start, int end);
 void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
 void bubbleSort(int arr[], int arraySize);
+int* arrayGenerator(int arr[], int n);
 
 //Exchange Sort: Stephen  
 void exchangeSort(int arr[], int z, int swaps, int compares);
@@ -38,7 +39,7 @@ void quickSort(int arr[], int low, int high);
 
 int main()
 {
-    int randomArray[1000], arraySize = 0, heapSize, n;
+    int randomArray[1000], almostSorted[1000], arraySize = 0, heapSize, n;
     float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7;
     struct timeval tstart, tend;
 
@@ -55,6 +56,9 @@ int main()
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
+
+    //Almost Sorted Array
+    int* ptr = arrayGenerator(almostSorted, n);
 
     //Make copies of randomArray to pass same array to functions
     //Exchange sort: Stephen
@@ -371,4 +375,43 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
+}
+
+int* arrayGenerator(int arr[], int n)
+{
+  srand(time(0));
+
+  //First integer
+  int x = rand() % 1000;
+
+  for (int i = 0; i < n / 4; i++)
+  {
+    x = arr[i];
+  }
+
+  //Second integer
+  x = rand() % 1000;
+
+  for (int j = 0; j < n / 4; j++)
+  {
+    x = arr[j];
+  }
+
+  //Third integer
+  x = rand() % 1000;
+
+  for (int k = 0; k < n / 4; k++)
+  {
+    x = arr[k];
+  }
+
+  //Fourth integer
+  x = rand() % 1000;
+
+  for (int l = 0; l < n / 4; l++)
+  {
+    x = arr[l];
+  }
+
+  return arr;
 }
