@@ -226,10 +226,8 @@ void exchangeSort(int arr[], int z, int& swaps, int& compares)
             int temp;
             if (arr[j] > arr[n])
             {
-                swap++;
-                temp = arr[j];
-                arr[j] = arr[n];
-                arr[n] = temp;
+                swaps++;
+                swap(arr[j], arr[n]);
             }
             compares++;
         }
@@ -261,10 +259,4 @@ void copy(int arrA[], const int arrB[], int z)
 {
     for(int i=0; i < z; i++)
         arrA[i] = arrB[i];
-}
-
-//Insertion Sort: Brad 
-void insertionSort()
-{
-    
 }
