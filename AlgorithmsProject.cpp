@@ -260,13 +260,13 @@ void insertionSort(int arr[], int z, int& compares)
     {
         x = arr[i];
         j = i-1;
-        while(j>=0 && s[j]>x)
+        while(j>=0 && arr[j]>x)
         {
             arr[j+1] = arr[j];
             j--;
             compares++;
         }
-        s[j+1] = x;
+        arr[j+1] = x;
     }
 }
 
