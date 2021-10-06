@@ -66,7 +66,7 @@ int main()
     //End Timer
     gettimeofday(&tend, NULL);
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
-    cout << "Exchange Sort: " << runtime1;
+    cout << "Exchange Sort Time: " << runtime1;
 
     //Insertion Sort
     int insList[n];
