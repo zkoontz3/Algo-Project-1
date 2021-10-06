@@ -7,6 +7,7 @@ Algorithms Project Code
 #include<iostream>
 #include<cstdlib>
 #include<array>
+#include<timercpp>
 
 using namespace std;
 
@@ -50,6 +51,7 @@ int main()
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
+<<<<<<< HEAD
     
     //Make copies of randomArray to pass same array to functions
     //Exchange and Insertion sort: Stephen
@@ -63,8 +65,10 @@ int main()
     insertionSort(insList, n, compares);
     cout << "List sorted with exchange sort. Compres: " << compares << endl;
 
-   return 0; 
+    return 0;
 }
+
+>>>>>>> 62d8e5e4ed8107d1593dadfaaa6b2ca4655b264c
 //Swap function for the selection sort: Zach Koontz
 void swap(int *x, int *p)
 {
