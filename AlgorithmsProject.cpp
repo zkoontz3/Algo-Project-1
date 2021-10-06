@@ -7,7 +7,6 @@ Algorithms Project Code
 #include<iostream>
 #include<cstdlib>
 #include<array>
-#include<timercpp>
 
 using namespace std;
 
@@ -51,7 +50,6 @@ int main()
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
-<<<<<<< HEAD
     
     //Make copies of randomArray to pass same array to functions
     //Exchange and Insertion sort: Stephen
