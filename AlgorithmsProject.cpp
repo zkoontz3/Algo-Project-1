@@ -23,9 +23,11 @@ void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
 void bubbleSort(int arr[], int arraySize);
 
-//exchange and insertion sort: Stephen  
+//Exchange Sort: Stephen  
 void exchangeSort(int arr[], int z, int swaps, int compares);
-void insertionSort(int arr[], int z, int compares);
+
+//Insertion Sort: Brad 
+void insertionSort(int arr[], int n);
 
 //Array copy function: Stephen
 void copy(int arrA[], const int arrB[], int z);
@@ -317,23 +319,20 @@ void exchangeSort(int arr[], int z, int swaps, int compares)
     }
 }
 
-//Insertion Sort: Stephen 
-void insertionSort(int arr[], int z, int compares)
+//Insertion Sort: Brad 
+void insertionSort(int arr[], int n)
 {
-    int length = z;
-    //int compares = 0;
-    int i, j, x;
-    for(i = 1; i < length; i++)
+    int i, key, j;
+    for (i = 1; i < n; i++)
     {
-        x = arr[i];
-        j = i-1;
-        while(j>=0 && arr[j]>x)
+        key = arr[i];
+        j = i - 1;
+        while (j >= 0 && arr[j] > key)
         {
-            arr[j+1] = arr[j];
-            j--;
-            compares++;
+            arr[j + 1] = arr[j];
+            j = j - 1;
         }
-        arr[j+1] = x;
+        arr[j + 1] = key;
     }
 }
 
