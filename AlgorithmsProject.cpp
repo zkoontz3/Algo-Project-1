@@ -37,7 +37,7 @@ void quickSort(int arr[], int low, int high);
 int main()
 {
     int randomArray[1000], arraySize = 0, heapSize, n;
-    float runtime1, runtime2, runtime3, runtime4, runtime5;
+    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6;
     struct timeval tstart, tend;
 
     //Random Array Generator
@@ -122,6 +122,19 @@ int main()
     gettimeofday(&tend, NULL);
     runtime5 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
     cout << "Heap Sort Time: " << runtime5 << endl;
+
+    //Merge Sort
+    int mergeList[n];
+    copy(mergeList, randomArray, n);
+
+    //Merge Sort: Start Timer
+    gettimeofday(&tstart, NULL);
+    mergeSort(heapList,0,n-1);
+
+    //Merge Sort: End Timer
+    gettimeofday(&tend, NULL);
+    runtime6 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "Merge Sort Time: " << runtime6 << endl;
 
     return 0;
 }
