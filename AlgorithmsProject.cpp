@@ -37,7 +37,7 @@ void quickSort(int arr[], int low, int high);
 int main()
 {
     int randomArray[1000], arraySize = 0, heapSize, n;
-    float runtime1;
+    float runtime1, runtime2, runtime3;
     struct timeval tstart, tend;
 
     //Random Array Generator
@@ -60,31 +60,48 @@ int main()
     int exgList[n];
     copy(exgList, randomArray, n);
 
-    //Start Timer
+    //Exchange Sort: Start Timer
     gettimeofday(&tstart, NULL);
-
     exchangeSort(exgList, n, swaps, compares);
-    cout << "List sorted with exchange sort. Compares: " << compares << "Swaps: " << swaps << endl;
     
-    //End Timer
+    //Exchange Sort: End Timer
     gettimeofday(&tend, NULL);
+    cout << "List sorted with exchange sort. Compares: " << compares << "Swaps: " << swaps << endl;
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
-    cout << "Exchange Sort Time: " << runtime1;
+    cout << "Exchange Sort Time: " << runtime1 << endl;
 
     //Insertion Sort
     int insList[n];
     copy(insList, randomArray, n);
+
+    //Insertion Sort: Start Timer
+    gettimeofday(&tstart, NULL);
     insertionSort(insList, n, compares);
-    cout << "List sorted with exchange sort. Compares: " << compares << endl;
+
+    //Insertion Sort: End Timer
+    gettimeofday(&tend, NULL);
+    cout << "List sorted with insertion sort. Compares: " << compares << endl;
+    runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "Insertion Sort Time: " << runtime2 << endl;
 
     //Quicksort
     int listOints[n];
     copy(listOints, randomArray, n);
+
+    //Quicksort: Start Timer
+    gettimeofday(&tstart, NULL);
     quickSort(listOints,0, n-1);
+
+    //Quicksort: End Timer
+    gettimeofday(&tend, NULL);
+    runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "Insertion Sort Time: " << runtime3 << endl;
+    
     return 0;
+
+
 }
 
->>>>>>> 62d8e5e4ed8107d1593dadfaaa6b2ca4655b264c
 //Swap function for the selection sort: Zach Koontz
 void swap(int *x, int *p)
 {
