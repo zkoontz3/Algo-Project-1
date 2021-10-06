@@ -37,6 +37,7 @@ void quickSort(int arr[], int low, int high);
 int main()
 {
     int randomArray[1000], arraySize = 0, heapSize, n;
+    float runtime1;
     struct timeval tstart, tend;
 
     //Random Array Generator
