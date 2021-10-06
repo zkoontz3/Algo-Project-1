@@ -22,8 +22,12 @@ void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize);
 void bubbleSort(int arr[], int arraySize);
 
-//exchange: Stephen  
-void exchangeSort(int arr[], int z);
+//exchange and insertion sort: Stephen  
+void exchangeSort(int arr[], int z, int& swaps, int& compares);
+void insertionSort(int arr[], int z, int& compares);
+
+//Array copy function: Stephen
+void copy(int arrA[], const int arrB[], int z);
 
 //insertion: Brad 
 
@@ -31,7 +35,7 @@ void exchangeSort(int arr[], int z);
 
 int main()
 {
-    int randomArray[1000], arraySize, heapSize, n;
+    int randomArray[1000], arraySize = 0, heapSize, n;
 
     //Random Array Generator
     srand(time(0));
@@ -46,10 +50,21 @@ int main()
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
+    
+    //Make copies of randomArray to pass same array to functions
+    //Exchange and Insertion sort: Stephen
+    int swaps = 0, compares = 0;
+    int exgList[n];
+    copy(exgList, randomArray, n);
+    exchangeSort(exgList, n, swaps, compares);
+    cout << "List sorted with exchange sort. Compres: " << compares << "Swaps: " << swaps << endl;
+    int insList[n];
+    copy(insList, randomArray, n);
+    insertionSort(insList, n, compares);
+    cout << "List sorted with exchange sort. Compres: " << compares << endl;
+
+   return 0; 
 }
-
-return 0;
-
 //Swap function for the selection sort: Zach Koontz
 void swap(int *x, int *p)
 {
@@ -195,21 +210,53 @@ void bubbleSort(int arr[], int arraySize)
 }
 
 //Exchange Sort: Stephen 
-void exchangeSort(int arr[], int z)
+void exchangeSort(int arr[], int z, int& swaps, int& compares)
 {
     int length = z;
     int n;
+    int swaps = 0, compares = 0;
     for (int j = 0; j < length-1; j++)
     {
         for(n = j+1; n < length; n++)
         {
             int temp;
-            if (arr[j] > arr[n]){
+            if (arr[j] > arr[n])
+            {
+                swap++;
                 temp = arr[j];
                 arr[j] = arr[n];
-                arr[n] = temp;}
+                arr[n] = temp;
+            }
+            compares++;
         }
     }
+}
+
+//Insertion Sort: Stephen 
+void insertionSort(int arr[], int z, int& compares)
+{
+    int length = z;
+    int compares = 0;
+    int i, j, x;
+    for(i = 1; i < length; i++)
+    {
+        x = arr[i];
+        j = i-1;
+        while(j>=0 && s[j]>x)
+        {
+            arr[j+1] = arr[j];
+            j--;
+            compares++;
+        }
+        s[j+1] = x;
+    }
+}
+
+//Array copy function: Stephen
+void copy(int arrA[], const int arrB[], int z)
+{
+    for(int i=0; i < z; i++)
+        arrA[i] = arrB[i];
 }
 
 //Insertion Sort: Brad 
