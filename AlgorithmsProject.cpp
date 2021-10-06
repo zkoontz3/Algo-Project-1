@@ -30,8 +30,6 @@ void insertionSort(int arr[], int z, int& compares);
 //Array copy function: Stephen
 void copy(int arrA[], const int arrB[], int z);
 
-//insertion: Brad 
-
 //quickSort: Colin McCarrie
 
 int main()
