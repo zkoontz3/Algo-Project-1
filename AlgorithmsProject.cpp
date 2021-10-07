@@ -14,7 +14,7 @@ using namespace std;
 
 //Selection Sort and Merge Sort: Zach Koontz
 void swap_ours(int arr[], int x, int p);
-void selectionSort(int arr[], int n);
+void selectionSort(int arr[], int n, int &counter);
 void merge(int arr[], int start, int mid, int end);
 void mergeSort(int arr[], int start, int end);
 
@@ -78,14 +78,16 @@ int main()
     cout << "List sorted with exchange sort. Compares: " << compares << " swaps: " << swaps << endl;
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Random) Time: " << runtime1 << endl;
-    
+    cout << "-Exchange Sort (Random) Counts: " << compares << endl;
+    compares = 0;
     //Exchange Sort: Few Unique
     gettimeofday(&tstart, NULL);
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
-
+    cout << "-Exchange Sort (Few Unique) Counts: " << compares << endl<<endl;
+    
     //Insertion Sort
     int insList[n];
     copy_ours(insList, randomArray, n);
