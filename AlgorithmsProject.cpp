@@ -458,6 +458,7 @@ void heapSort(int arr[], int n, int counter)
     //Call max heapify on reduced heap
     heapify(arr, i, 0);
   }
+  counter++;
 }
 
 //Bubble Sort
