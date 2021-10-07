@@ -15,9 +15,9 @@ using namespace std;
 
 //Selection Sort and Merge Sort: Zach Koontz
 void swap_ours(int arr[], int x, int p);
-void selectionSort(int arr[], int n, int &count);
+void selectionSort(int arr[], int n, int compares);
 void merge(int arr[], int start, int mid, int end);
-void mergeSort(int arr[], int start, int end);
+void mergeSort(int arr[], int start, int end, int compares);
 
 //Heap Sort and Bubble Sort: Alex McClellan
 //Heap Sort functions from GeeksForGeeks.com 
@@ -247,11 +247,11 @@ int main()
     runtime25 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Partially Sorted) Time: " << runtime25 << endl;
     cout << "-Bubble Sort (Random) Counts: " << compares << endl<<endl;
+    compares = 0;
 
     //Heap Sort
     int heapList[n];
     copy_ours(heapList, randomArray, n);
-    compares = 0;
 
     //Heap Sort: Random
     gettimeofday(&tstart, NULL);
@@ -259,6 +259,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime5 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Random) Time: " << runtime5 << endl;
+    cout << "-Heap Sort (Random) Counts: " << compares << endl;
     compares = 0;
 
     //Heap Sort: Few Unique
@@ -267,6 +268,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime12 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Few Unique) Time: " << runtime12 << endl;
+    cout << "-Heap Sort (Few Unique) Counts: " << compares << endl;
     compares = 0;
 
     //Heap Sort: Reversed Sorted
@@ -275,6 +277,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime19 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Reversed Sorted) Time: " << runtime19 << endl;
+    cout << "-Heap Sort (Reversed Sorted) Counts: " << compares << endl;
     compares = 0;
 
     //Heap Sort: Partially Sorted
@@ -282,7 +285,8 @@ int main()
     heapSort(partiallySorted,n, compares);
     gettimeofday(&tend, NULL);
     runtime26 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Heap Sort (Partially Sorted) Time: " << runtime26 << endl<<endl;
+    cout << "Heap Sort (Partially Sorted) Time: " << runtime26 << endl;
+    cout << "-Heap Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
     //Merge Sort
@@ -291,66 +295,79 @@ int main()
 
     //Merge Sort: Random
     gettimeofday(&tstart, NULL);
-    mergeSort(mergeList,0,n-1);
+    mergeSort(mergeList,0,n-1,compares);
     gettimeofday(&tend, NULL);
     runtime6 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Merge Sort (Random) Time: " << runtime6 << endl;
+    cout << "-Merge Sort (Random) Counts: " << compares << endl;
+    compares = 0;
 
     //Merge Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    mergeSort(ptr,0,n-1);
+    mergeSort(ptr,0,n-1,compares);
     gettimeofday(&tend, NULL);
     runtime13 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Merge Sort (Few Unique) Time: " << runtime13 << endl;
+    cout << "-Merge Sort (Few Unique) Counts: " << compares << endl;
+    compares = 0;
 
     //Merge Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    mergeSort(reversedSorted,0,n-1);
+    mergeSort(reversedSorted,0,n-1,compares);
     gettimeofday(&tend, NULL);
     runtime20 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Merge Sort (Reversed Sorted) Time: " << runtime20 << endl;
+    cout << "-Merge Sort (Reversed Sorted) Counts: " << compares << endl;
+    compares = 0;
 
     //Merge Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    mergeSort(partiallySorted,0,n-1);
+    mergeSort(partiallySorted,0,n-1,compares);
     gettimeofday(&tend, NULL);
     runtime27 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Merge Sort (Partially Sorted) Time: " << runtime27 << endl<<endl;
+    cout << "Merge Sort (Partially Sorted) Time: " << runtime27 << endl;
+    cout << "-Merge Sort (Partially Sorted) Counts: " << compares << endl<<endl;
+    compares = 0;
 
     //Selection Sort
     int selectionList[n];
     copy_ours(selectionList, randomArray, n);
-    int selectCount = 0;
-    int selectCount2 = 0;
-    int selectCount3 = 0;
 
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
-    selectionSort(selectionList,n, selectCount);
+    selectionSort(selectionList,n, compares);
     gettimeofday(&tend, NULL);
     runtime7 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Random) Time: " << runtime7 << endl;
+    cout << "-Selection Sort (Random) Counts: " << compares << endl;
+    compares = 0;
 
     //Selection Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    selectionSort(ptr,n, selectCount2);
+    selectionSort(ptr,n, compares);
     gettimeofday(&tend, NULL);
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
+    cout << "-Selection Sort (Few Unique) Counts: " << compares << endl;
+    compares = 0;
 
     //Selection Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    selectionSort(reversedSorted,n,selectCount3);
+    selectionSort(reversedSorted,n,compares);
     gettimeofday(&tend, NULL);
     runtime21 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Reversed Sorted) Time: " << runtime21 << endl;
+    cout << "-Selection Sort (Reversed Sorted) Counts: " << compares << endl;
+    compares = 0;
 
     //Selection Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    selectionSort(partiallySorted,n,selectCount3);
+    selectionSort(partiallySorted,n,compares);
     gettimeofday(&tend, NULL);
     runtime28 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Partially Sorted) Time: " << runtime28 << endl;
+    cout << "-Selection Sort (Partially Sorted) Counts: " << compares << endl<<endl;
+    compares = 0;
 
     return 0;
 }
@@ -363,7 +380,7 @@ void swap_ours(int arr[], int first, int second) {
 }
 
 //selection sort: Zach Koontz
-void selectionSort(int arr[], int n, int &count)
+void selectionSort(int arr[], int n, int compares)
 {
     int i, j, minIndex;
     for (i = 0; i < n-1; i++)
@@ -419,14 +436,15 @@ void merge(int arr[], int start, int mid, int end)
 }
 
 //Merge Sort: Zach Koontz
-void mergeSort(int arr[], int start, int end)
+void mergeSort(int arr[], int start, int end, int compares)
 {
   if(start < end){
      int mid = start + (end - start)/2;
-     mergeSort(arr,start,mid);
-     mergeSort(arr,mid + 1,end);
+     mergeSort(arr,start,mid,compares);
+     mergeSort(arr,mid + 1,end,compares);
      merge(arr, start, mid, end);
   }
+  compares++;
 }
     
 //Heapify Function
