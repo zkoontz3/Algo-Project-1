@@ -179,7 +179,7 @@ int main()
     bubbleSort(ptr,n);
     gettimeofday(&tend, NULL);
     runtime11 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Bubble Sort (Few Unique) Time: " << runtime11 << endl<<endl;
+    cout << "Bubble Sort (Few Unique) Time: " << runtime11 << endl;
 
     //Bubble Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
