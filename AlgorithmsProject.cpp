@@ -433,11 +433,9 @@ void heapify(int arr[], int n, int i)
   //If Largest isn't the root
   if (largest != i)
   {
-    swap_ours(arr, i, largest);
+    swap(arr[i],arr[largest]);
+    heapify(arr, n, largest);
   }
-
-  //Recursive call
-  heapify(arr, n, largest);
 }
 
 //Main Heap Sort Function
@@ -453,7 +451,7 @@ void heapSort(int arr[], int n, int counter)
   for (int i = n - 1; i >= 0; i--)
   {
     //Moves root to the end of the array
-    swap_ours(arr, 0, i);
+    swap(arr[0], arr[i]);
 
     //Call max heapify on reduced heap
     heapify(arr, i, 0);
