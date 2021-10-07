@@ -43,11 +43,14 @@ int main()
     int randomArray[1000], fewUnique[1000], arraySize = 0, heapSize, n;
     float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8, runtime9, runtime10, runtime11, runtime12, runtime13, runtime14;
     struct timeval tstart, tend;
-
+    int size;
+    cout<<"Enter the size of the data set: ";
+    cin>>size;
+    cout<<endl;
     //Random Array Generator
     srand(time(0));
 
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < size; i++)
     {
         int x = rand() % 1000;
         randomArray[i] = x;
@@ -420,7 +423,7 @@ int* arrayGenerator(int arr[], int n)
   srand(time(0));
 
   //First integer
-  int x = rand() % 1000;
+  int x = rand() % n;
 
   for (int i = 0; i < n / 4; i++)
   {
@@ -428,7 +431,7 @@ int* arrayGenerator(int arr[], int n)
   }
 
   //Second integer
-  x = rand() % 1000;
+  x = rand() % n;
 
   for (int j = 0; j < n / 4; j++)
   {
