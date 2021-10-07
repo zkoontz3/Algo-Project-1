@@ -111,15 +111,15 @@ int main()
     gettimeofday(&tend, NULL);
     runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Random) Time: " << runtime3 << endl;
-    cout << "Quicksort (Random) Counts: " << quick_count << endl;
-    
+    cout << "-Quicksort (Random) Counts: " << quick_count << endl;
+    quick_count = 0;
     //Quicksort: Few Unique
     gettimeofday(&tstart, NULL);
-    quickSort(ptr,0, n-1);
+    quickSort(ptr,0, n-1, quick_count);
     gettimeofday(&tend, NULL);
     runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Few Unique) Time: " << runtime10 << endl;
-  
+    cout << "-Quicksort (Few Unique) Counts: " << quick_count << endl;
     //Bubble Sort
     int bubbleList[n];
     copy_ours(bubbleList, randomArray, n);
@@ -408,10 +408,10 @@ void quickSort(int arr[], int low, int high, int &compares)
 {
     if (low < high)
     {
-        compares++
+        compares++;
         int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        quickSort(arr, low, pi - 1, compares);
+        quickSort(arr, pi + 1, high, compares);
     }
 }
 
