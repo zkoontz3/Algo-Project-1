@@ -30,7 +30,7 @@ int* arrayGenerator(int arr[], int n);
 void exchangeSort(int arr[], int z, int &swaps, int &compares);
 
 //Insertion Sort: Brad 
-void insertionSort(int arr[], int n);
+void insertionSort(int arr[], int n, int compares);
 
 //Array copy_ours function: Stephen
 void copy_ours(int arrA[], const int arrB[], int z);
@@ -97,7 +97,6 @@ int main()
     gettimeofday(&tstart, NULL);
     exchangeSort(exgList, n, swaps, compares);
     gettimeofday(&tend, NULL);
-    cout << "List sorted with exchange sort. Compares: " << compares << " swaps: " << swaps << endl;
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Random) Time: " << runtime1 << endl;
     cout << "-Exchange Sort (Random) Counts: " << compares << endl;
@@ -109,6 +108,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
+    cout << "-Exchange Sort (Few Unique) Counts: " << compares << endl;
     compares = 0;
 
     //Exchange Sort: Reversed Sorted
@@ -117,6 +117,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl;
+    cout << "-Exchange Sort (Reversed Sorted) Counts: " << compares << endl;
     compares = 0;
 
     //Exchange Sort: Partially Sorted
@@ -124,7 +125,8 @@ int main()
     exchangeSort(partiallySorted, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime22 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Exchange Sort (Partially Sorted) Time: " << runtime22 << endl<<endl;
+    cout << "Exchange Sort (Partially Sorted) Time: " << runtime22 << endl;
+    cout << "-Exchange Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
     //Insertion Sort
@@ -133,32 +135,36 @@ int main()
 
     //Insertion Sort: Random
     gettimeofday(&tstart, NULL);
-    insertionSort(insList, n);
+    insertionSort(insList, n, compares);
     gettimeofday(&tend, NULL);
-    cout << "List sorted with insertion sort. Compares: " << compares << endl;
     runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Random) Time: " << runtime2 << endl;
+    cout << "-Insertion Sort (Random) Counts: " << compares << endl;
+    compares = 0;
 
     //Insertion Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    insertionSort(ptr, n);
+    insertionSort(ptr, n, compares);
     gettimeofday(&tend, NULL);
     runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl;
+    compares = 0;
 
     //Insertion Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    insertionSort(reversedSorted, n);
+    insertionSort(reversedSorted, n, compares);
     gettimeofday(&tend, NULL);
     runtime16 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Reversed Sorted) Time: " << runtime16 << endl;
+    compares = 0;
 
     //Insertion Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    insertionSort(partiallySorted, n);
+    insertionSort(partiallySorted, n, compares);
     gettimeofday(&tend, NULL);
     runtime23 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Partially Sorted) Time: " << runtime23 << endl<<endl;
+    compares = 0;
 
     //Quicksort
     int listOints[n];
@@ -500,9 +506,9 @@ void exchangeSort(int arr[], int z, int &swaps, int &compares)
 }
 
 //Insertion Sort: Brad 
-void insertionSort(int arr[], int n)
+void insertionSort(int arr[], int n, int compares)
 {
-    int i, key, j, counter;
+    int i, key, j;
     for (i = 1; i < n; i++)
     {
         key = arr[i];
@@ -511,7 +517,7 @@ void insertionSort(int arr[], int n)
         {
             arr[j + 1] = arr[j];
             j = j - 1;
-            counter++;
+            compares++;
         }
         arr[j + 1] = key;
     }
