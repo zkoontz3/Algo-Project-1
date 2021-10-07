@@ -241,6 +241,9 @@ int main()
     int selectionList[n];
     copy_ours(selectionList, randomArray, n);
     int selectCount = 0;
+    int selectCount2 = 0;
+    int selectCount3 = 0;
+
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
     selectionSort(selectionList,n, selectCount);
@@ -250,14 +253,14 @@ int main()
 
     //Selection Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    selectionSort(ptr,n, selectCount);
+    selectionSort(ptr,n, selectCount2);
     gettimeofday(&tend, NULL);
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
 
     //Selection Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    selectionSort(reversedSorted,n);
+    selectionSort(reversedSorted,n,selectCount3);
     gettimeofday(&tend, NULL);
     runtime21 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime21 << endl;
