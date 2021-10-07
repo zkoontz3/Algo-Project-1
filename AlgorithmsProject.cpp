@@ -129,7 +129,7 @@ int main()
     //Quicksort
     int listOints[n];
     copy_ours(listOints, randomArray, n);
-    int quick_count = 0, quick_count2 = 0;
+    int quick_count = 0;
 
     //Quicksort: Random
     gettimeofday(&tstart, NULL);
@@ -150,7 +150,7 @@ int main()
     quick_count = 0;
     //Quicksort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    quickSort(reversedSorted,0, n-1, quick_count2);
+    quickSort(reversedSorted,0, n-1, quick_count);
     gettimeofday(&tend, NULL);
     runtime17 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Reverse) Time: " << runtime17 << endl;
