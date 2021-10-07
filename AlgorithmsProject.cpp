@@ -66,7 +66,8 @@ int main()
 
     //Make copies of randomArray to pass same array to functions
     //Exchange sort: Stephen
-    int &swaps, &compares;
+    int &swaps;
+    int &compares;
     int exgList[n];
     copy_ours(exgList, randomArray, n);
 
