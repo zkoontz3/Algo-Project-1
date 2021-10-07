@@ -41,7 +41,7 @@ void quickSort(int arr[], int low, int high, int &compares);
 int main()
 {
     int arraySize = 0, heapSize, n;
-    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8, runtime9, runtime10, runtime11, runtime12, runtime13, runtime14;
+    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8, runtime9, runtime10, runtime11, runtime12, runtime13, runtime14, runtime15, runtime16, runtime17, runtime18, runtime19, runtime20, runtime21;
     struct timeval tstart, tend;
     int size;
     cout<<"Enter the size of the data set: ";
@@ -97,9 +97,21 @@ int main()
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+<<<<<<< HEAD
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
     cout << "-Exchange Sort (Few Unique) Counts: " << compares << endl<<endl;
     
+=======
+    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
+
+    //Exchange Sort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    exchangeSort(reversedSorted, n, swaps, compares);
+    gettimeofday(&tend, NULL);
+    runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl<<endl;
+
+>>>>>>> f1c3ff53b129c503267f67a7ff549dfa15a1cef1
     //Insertion Sort
     int insList[n];
     copy_ours(insList, randomArray, n);
@@ -118,6 +130,13 @@ int main()
     gettimeofday(&tend, NULL);
     runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl<<endl;
+
+    //Insertion Sort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    insertionSort(reversedSorted, n);
+    gettimeofday(&tend, NULL);
+    runtime16 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Insertion Sort (Reversed Sorted) Time: " << runtime16 << endl<<endl;
 
     //Quicksort
     int listOints[n];
@@ -139,6 +158,14 @@ int main()
     gettimeofday(&tend, NULL);
     runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Few Unique) Time: " << runtime10 << endl;
+    cout << "-Quicksort (Few Unique) Counts: " << quick_count2 << endl<<endl;
+
+    //Quicksort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    quickSort(reversedSorted,0, n-1, quick_count2);
+    gettimeofday(&tend, NULL);
+    runtime17 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Quicksort (Few Unique) Time: " << runtime17 << endl;
     cout << "-Quicksort (Few Unique) Counts: " << quick_count << endl<<endl;
     
     //Bubble Sort
@@ -159,6 +186,13 @@ int main()
     runtime11 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Few Unique) Time: " << runtime11 << endl<<endl;
 
+    //Bubble Sort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    bubbleSort(reversedSorted,n);
+    gettimeofday(&tend, NULL);
+    runtime18 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Bubble Sort (Few Unique) Time: " << runtime18 << endl<<endl;
+
     //Heap Sort
     int heapList[n];
     copy_ours(heapList, randomArray, n);
@@ -176,6 +210,13 @@ int main()
     gettimeofday(&tend, NULL);
     runtime12 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Few Unique) Time: " << runtime12 << endl;
+
+    //Heap Sort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    heapSort(reversedSorted,n);
+    gettimeofday(&tend, NULL);
+    runtime19 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Heap Sort (Few Unique) Time: " << runtime19 << endl;
 
     //Merge Sort
     int mergeList[n];
@@ -195,10 +236,20 @@ int main()
     runtime13 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Merge Sort (Few Unique) Time: " << runtime13 << endl;
 
+    //Merge Sort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    mergeSort(reversedSorted,0,n-1);
+    gettimeofday(&tend, NULL);
+    runtime20 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Merge Sort (Few Unique) Time: " << runtime20 << endl;
+
     //Selection Sort
     int selectionList[n];
     copy_ours(selectionList, randomArray, n);
     int selectCount = 0;
+    int selectCount2 = 0;
+    int selectCount3 = 0;
+
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
     selectionSort(selectionList,n, selectCount);
@@ -208,10 +259,17 @@ int main()
 
     //Selection Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    selectionSort(ptr,n, selectCount);
+    selectionSort(ptr,n, selectCount2);
     gettimeofday(&tend, NULL);
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
+
+    //Selection Sort: Reversed Sorted
+    gettimeofday(&tstart, NULL);
+    selectionSort(reversedSorted,n,selectCount3);
+    gettimeofday(&tend, NULL);
+    runtime21 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Selection Sort (Few Unique) Time: " << runtime21 << endl;
 
     return 0;
 }
