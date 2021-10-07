@@ -148,6 +148,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl;
+    cout << "-Insertion Sort (Few Unique) Counts: " << compares << endl;
     compares = 0;
 
     //Insertion Sort: Reversed Sorted
@@ -156,6 +157,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime16 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Reversed Sorted) Time: " << runtime16 << endl;
+    cout << "-Insertion Sort (Reversed Sorted) Counts: " << compares << endl;
     compares = 0;
 
     //Insertion Sort: Partially Sorted
@@ -163,46 +165,49 @@ int main()
     insertionSort(partiallySorted, n, compares);
     gettimeofday(&tend, NULL);
     runtime23 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Insertion Sort (Partially Sorted) Time: " << runtime23 << endl<<endl;
+    cout << "Insertion Sort (Partially Sorted) Time: " << runtime23 << endl;
+    cout << "-Insertion Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
     //Quicksort
     int listOints[n];
     copy_ours(listOints, randomArray, n);
-    int quick_count = 0, quick_count2 = 0;
 
     //Quicksort: Random
     gettimeofday(&tstart, NULL);
-    quickSort(randomArray,0, n-1, quick_count);
+    quickSort(randomArray,0, n-1, compares);
     gettimeofday(&tend, NULL);
     runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Random) Time: " << runtime3 << endl;
-    cout << "-Quicksort (Random) Counts: " << quick_count << endl;
-    quick_count = 0;
+    cout << "-Quicksort (Random) Counts: " << compares << endl;
+    compares = 0;
 
     //Quicksort: Few Unique
     gettimeofday(&tstart, NULL);
-    quickSort(ptr,0, n-1, quick_count2);
+    quickSort(ptr,0, n-1, compares);
     gettimeofday(&tend, NULL);
     runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Few Unique) Time: " << runtime10 << endl;
-    cout << "-Quicksort (Few Unique) Counts: " << quick_count2 << endl;
+    cout << "-Quicksort (Few Unique) Counts: " << compares << endl;
+    compares = 0;
 
     //Quicksort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    quickSort(reversedSorted,0, n-1, quick_count2);
+    quickSort(reversedSorted,0, n-1, compares);
     gettimeofday(&tend, NULL);
     runtime17 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Reversed Sorted) Time: " << runtime17 << endl;
-    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count2 << endl;
-    quick_count2 = 0;
+    cout << "-Quicksort (Reversed Sorted) Counts: " << compares << endl;
+    compares = 0;
+
     //Quicksort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    quickSort(partiallySorted,0, n-1, quick_count2);
+    quickSort(partiallySorted,0, n-1, compares);
     gettimeofday(&tend, NULL);
     runtime24 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Partially Sorted) Time: " << runtime24 << endl;
-    cout << "-Quicksort (Partially Sorted) Counts: " << quick_count2 << endl<<endl;
+    cout << "-Quicksort (Partially Sorted) Counts: " << compares << endl<<endl;
+    compares = 0;
     
     //Bubble Sort
     int bubbleList[n];
