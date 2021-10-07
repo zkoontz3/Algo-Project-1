@@ -23,7 +23,7 @@ void mergeSort(int arr[], int start, int end);
 //Heap Sort functions from GeeksForGeeks.com 
 void heapify(int arr[], int heapSize, int i);
 void heapSort(int arr[], int heapSize, int counter);
-void bubbleSort(int arr[], int arraySize);
+void bubbleSort(int arr[], int arraySize, int compares);
 int* arrayGenerator(int arr[], int n);
 
 //Exchange Sort: Stephen  
@@ -215,31 +215,38 @@ int main()
 
     //Bubble Sort: Random
     gettimeofday(&tstart, NULL);
-    bubbleSort(bubbleList,n);
+    bubbleSort(bubbleList,n,compares);
     gettimeofday(&tend, NULL);
     runtime4 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Random) Time: " << runtime4 << endl;
+    cout << "-Bubble Sort (Random) Counts: " << compares << endl;
+    compares = 0;
 
     //Bubble Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    bubbleSort(ptr,n);
+    bubbleSort(ptr,n,compares);
     gettimeofday(&tend, NULL);
     runtime11 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Few Unique) Time: " << runtime11 << endl;
+    cout << "-Bubble Sort (Few Unique) Counts: " << compares << endl;
+    compares = 0;
 
     //Bubble Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    bubbleSort(reversedSorted,n);
+    bubbleSort(reversedSorted,n,compares);
     gettimeofday(&tend, NULL);
     runtime18 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Reversed Sorted) Time: " << runtime18 << endl;
+    cout << "-Bubble Sort (Reversed Sorted) Counts: " << compares << endl;
+    compares = 0;
 
     //Bubble Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    bubbleSort(partiallySorted,n);
+    bubbleSort(partiallySorted,n,compares);
     gettimeofday(&tend, NULL);
     runtime25 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Bubble Sort (Partially Sorted) Time: " << runtime25 << endl<<endl;
+    cout << "Bubble Sort (Partially Sorted) Time: " << runtime25 << endl;
+    cout << "-Bubble Sort (Random) Counts: " << compares << endl<<endl;
 
     //Heap Sort
     int heapList[n];
@@ -471,7 +478,7 @@ void heapSort(int arr[], int n, int counter)
 }
 
 //Bubble Sort
-void bubbleSort(int arr[], int arraySize)
+void bubbleSort(int arr[], int arraySize, int compares)
 {
   int temp;
 
@@ -485,6 +492,7 @@ void bubbleSort(int arr[], int arraySize)
             temp = arr[j+1];
             arr[j+1] = arr[j];
             arr[j] = temp;
+            compares++;
           }
       }
   }
