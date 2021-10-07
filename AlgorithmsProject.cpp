@@ -27,7 +27,7 @@ void bubbleSort(int arr[], int arraySize, int compares);
 int* arrayGenerator(int arr[], int n);
 
 //Exchange Sort: Stephen  
-void exchangeSort(int arr[], int z, int &swaps, int &compares);
+void exchangeSort(int arr[], int z, int &swaps, int compares);
 
 //Insertion Sort: Brad 
 void insertionSort(int arr[], int n, int compares);
@@ -37,7 +37,7 @@ void copy_ours(int arrA[], const int arrB[], int z);
 
 //quickSort: Colin McCarrie
 int partition (int arr[], int low, int high);
-void quickSort(int arr[], int low, int high, int &compares);
+void quickSort(int arr[], int low, int high, int compares);
 
 int main()
 {
@@ -517,7 +517,7 @@ void bubbleSort(int arr[], int arraySize, int compares)
 }
 
 //Exchange Sort: Stephen 
-void exchangeSort(int arr[], int z, int &swaps, int &compares)
+void exchangeSort(int arr[], int z, int &swaps, int compares)
 {
     int length = z;
     int n;
@@ -581,7 +581,7 @@ int partition (int arr[], int low, int high)
 }
  
 //QUICK SORT FUNCTION: COLIN
-void quickSort(int arr[], int low, int high, int &compares)
+void quickSort(int arr[], int low, int high, int compares)
 {
     if (low < high)
     {
