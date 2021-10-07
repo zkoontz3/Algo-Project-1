@@ -7,12 +7,13 @@ Algorithms Project Code
 #include<iostream>
 #include<cstdlib>
 #include<array>
+// #include<ctime>
 #include<sys/time.h>
 
 using namespace std;
 
 //Selection Sort and Merge Sort: Zach Koontz
-void swap(int *x, int *p);
+void swap_ours(int arr[], int x, int p);
 void selectionSort(int arr[], int n);
 void merge(int arr[], int start, int mid, int end);
 void mergeSort(int arr[], int start, int end);
@@ -30,8 +31,8 @@ void exchangeSort(int arr[], int z, int swaps, int compares);
 //Insertion Sort: Brad 
 void insertionSort(int arr[], int n);
 
-//Array copy function: Stephen
-void copy(int arrA[], const int arrB[], int z);
+//Array copy_ours function: Stephen
+void copy_ours(int arrA[], const int arrB[], int z);
 
 //quickSort: Colin McCarrie
 int partition (int arr[], int low, int high);
@@ -64,141 +65,140 @@ int main()
     //Exchange sort: Stephen
     int swaps = 0, compares = 0;
     int exgList[n];
-    copy(exgList, randomArray, n);
+    copy_ours(exgList, randomArray, n);
 
     //Exchange Sort: Random
     gettimeofday(&tstart, NULL);
     exchangeSort(exgList, n, swaps, compares);
     gettimeofday(&tend, NULL);
-    cout << "List sorted with exchange sort. Compares: " << compares << "Swaps: " << swaps << endl;
-    runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    cout << "List sorted with exchange sort. Compares: " << compares << " swaps: " << swaps << endl;
+    runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Random) Time: " << runtime1 << endl;
     
     //Exchange Sort: Almost Sorted
     gettimeofday(&tstart, NULL);
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
-    runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Almost Sorted) Time: " << runtime8 << endl;
 
     //Insertion Sort
     int insList[n];
-    copy(insList, randomArray, n);
+    copy_ours(insList, randomArray, n);
 
     //Insertion Sort: Random
     gettimeofday(&tstart, NULL);
     insertionSort(insList, n);
     gettimeofday(&tend, NULL);
     cout << "List sorted with insertion sort. Compares: " << compares << endl;
-    runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Random) Time: " << runtime2 << endl;
 
     //Insertion Sort: Almost Sorted
     gettimeofday(&tstart, NULL);
     insertionSort(ptr, n);
     gettimeofday(&tend, NULL);
-    runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Almost Sorted) Time: " << runtime9 << endl;
 
     //Quicksort
     int listOints[n];
-    copy(listOints, randomArray, n);
+    copy_ours(listOints, randomArray, n);
 
     //Quicksort: Random
     gettimeofday(&tstart, NULL);
     quickSort(listOints,0, n-1);
     gettimeofday(&tend, NULL);
-    runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Random) Time: " << runtime3 << endl;
     
     //Quicksort: Almost Sorted
     gettimeofday(&tstart, NULL);
     quickSort(ptr,0, n-1);
     gettimeofday(&tend, NULL);
-    runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Almost Sorted) Time: " << runtime10 << endl;
   
     //Bubble Sort
     int bubbleList[n];
-    copy(bubbleList, randomArray, n);
+    copy_ours(bubbleList, randomArray, n);
 
     //Bubble Sort: Random
     gettimeofday(&tstart, NULL);
     bubbleSort(bubbleList,n);
     gettimeofday(&tend, NULL);
-    runtime4 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime4 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Random) Time: " << runtime4 << endl;
 
     //Bubble Sort: Almost Sorted
     gettimeofday(&tstart, NULL);
     bubbleSort(ptr,n);
     gettimeofday(&tend, NULL);
-    runtime11 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime11 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Almost Sorted) Time: " << runtime11 << endl;
 
     //Heap Sort
     int heapList[n];
-    copy(heapList, randomArray, n);
+    copy_ours(heapList, randomArray, n);
 
     //Heap Sort: Random
     gettimeofday(&tstart, NULL);
     heapSort(heapList,n);
     gettimeofday(&tend, NULL);
-    runtime5 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime5 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Random) Time: " << runtime5 << endl;
 
     //Heap Sort: Almost Sorted
     gettimeofday(&tstart, NULL);
     heapSort(ptr,n);
     gettimeofday(&tend, NULL);
-    runtime12 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime12 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Almost Sorted) Time: " << runtime12 << endl;
 
     //Merge Sort
     int mergeList[n];
-    copy(mergeList, randomArray, n);
+    copy_ours(mergeList, randomArray, n);
 
     //Merge Sort: Random
     gettimeofday(&tstart, NULL);
     mergeSort(mergeList,0,n-1);
     gettimeofday(&tend, NULL);
-    runtime6 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime6 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Merge Sort (Random) Time: " << runtime6 << endl;
 
     //Merge Sort: Almost Sorted
     gettimeofday(&tstart, NULL);
     mergeSort(ptr,0,n-1);
     gettimeofday(&tend, NULL);
-    runtime13 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime13 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Merge Sort (Almost Sorted) Time: " << runtime13 << endl;
 
     //Selection Sort
     int selectionList[n];
-    copy(selectionList, randomArray, n);
+    copy_ours(selectionList, randomArray, n);
 
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
     selectionSort(selectionList,n);
     gettimeofday(&tend, NULL);
-    runtime7 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime7 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Random) Time: " << runtime7 << endl;
 
     //Selection Sort: End Timer
     gettimeofday(&tstart, NULL);
     selectionSort(ptr,n);
     gettimeofday(&tend, NULL);
-    runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e6;
+    runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Almost Sorted) Time: " << runtime14 << endl;
 
     return 0;
 }
 
-//Swap function for the selection sort: Zach Koontz
-void swap(int *x, int *p)
-{
-    int temp = *x;
-    *x = *p;
-    *p = temp;
+//swap_ours function for the selection sort: Zach Koontz
+void swap_ours(int arr[], int first, int second) {
+    int temp = arr[second];
+    arr[second] = arr[first];
+    arr[first] = temp;
 }
 
 //selection sort: Zach Koontz
@@ -211,7 +211,7 @@ void selectionSort(int arr[], int n)
         for (j = i+1; j < n; j++)
         if (arr[j] < arr[minIndex])
             minIndex = j;
-        swap(&arr[minIndex], &arr[i]);
+        swap_ours(arr, minIndex, i);
     }
 }   
 
@@ -290,7 +290,7 @@ void heapify(int arr[], int heapSize, int i)
   //If Largest isn't the root
   if (largest != i)
   {
-    swap(arr[i], arr[largest]);
+    swap_ours(arr, i, largest);
   }
 
   //Recursive call
@@ -310,7 +310,7 @@ void heapSort(int arr[], int heapSize)
   for (int i = heapSize - 1; i >= 0; i--)
   {
     //Moves root to the end of the array
-    swap(arr[0], arr[i]);
+    swap_ours(arr, 0, i);
 
     //Call max heapify on reduced heap
     heapify(arr, i, 0);
@@ -351,7 +351,7 @@ void exchangeSort(int arr[], int z, int swaps, int compares)
             if (arr[j] > arr[n])
             {
                 swaps++;
-                swap(arr[j], arr[n]);
+                swap_ours(arr, j, n);
             }
             compares++;
         }
@@ -361,7 +361,7 @@ void exchangeSort(int arr[], int z, int swaps, int compares)
 //Insertion Sort: Brad 
 void insertionSort(int arr[], int n)
 {
-    int i, key, j;
+    int i, key, j, counter;
     for (i = 1; i < n; i++)
     {
         key = arr[i];
@@ -370,13 +370,14 @@ void insertionSort(int arr[], int n)
         {
             arr[j + 1] = arr[j];
             j = j - 1;
+            counter++;
         }
         arr[j + 1] = key;
     }
 }
 
-//Array copy function: Stephen
-void copy(int arrA[], const int arrB[], int z)
+//Array copy_ours function: Stephen
+void copy_ours(int arrA[], const int arrB[], int z)
 {
     for(int i=0; i < z; i++)
         arrA[i] = arrB[i];
@@ -394,10 +395,10 @@ int partition (int arr[], int low, int high)
         if (arr[j] <= pivot)
         {
             i++;    
-            swap(&arr[i], &arr[j]);
+            swap_ours(arr, i, j);
         }
     }
-    swap(&arr[i + 1], &arr[high]);
+    swap_ours(arr, (i + 1), high);
     return (i + 1);
 }
  
