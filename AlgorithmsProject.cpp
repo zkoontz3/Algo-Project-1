@@ -66,7 +66,7 @@ int main()
 
     //Make copies of randomArray to pass same array to functions
     //Exchange sort: Stephen
-    int swaps = 0, compares = 0;
+    int &swaps, &compares;
     int exgList[n];
     copy_ours(exgList, randomArray, n);
 
@@ -91,7 +91,7 @@ int main()
 
     //Insertion Sort: Random
     gettimeofday(&tstart, NULL);
-    insertionSort(insList, n);
+    insertionSort(insList, n, );
     gettimeofday(&tend, NULL);
     cout << "List sorted with insertion sort. Compares: " << compares << endl;
     runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
