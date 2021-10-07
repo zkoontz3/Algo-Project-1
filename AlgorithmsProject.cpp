@@ -87,7 +87,7 @@ int main()
     gettimeofday(&tstart, NULL);
     exchangeSort(exgList, n, swaps, compares);
     gettimeofday(&tend, NULL);
-    cout << "List sorted with exchange sort. Compares: " << compares << " swaps: " << swaps << endl;
+    //cout << "List sorted with exchange sort. Compares: " << compares << " swaps: " << swaps << endl;
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Random) Time: " << runtime1 << endl;
     cout << "-Exchange Sort (Random) Counts: " << compares << endl;
@@ -97,7 +97,7 @@ int main()
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
+    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
     cout << "-Exchange Sort (Few Unique) Counts: " << compares << endl<<endl;
     
     //Insertion Sort
@@ -108,7 +108,7 @@ int main()
     gettimeofday(&tstart, NULL);
     insertionSort(insList, n);
     gettimeofday(&tend, NULL);
-    cout << "List sorted with insertion sort. Compares: " << compares << endl;
+    //cout << "List sorted with insertion sort. Compares: " << compares << endl;
     runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Insertion Sort (Random) Time: " << runtime2 << endl;
 
@@ -231,6 +231,7 @@ void selectionSort(int arr[], int n, int &count)
     {
         minIndex = i;
         for (j = i+1; j < n; j++)
+        count++;
         if (arr[j] < arr[minIndex])
             minIndex = j;
         swap_ours(arr, minIndex, i);
