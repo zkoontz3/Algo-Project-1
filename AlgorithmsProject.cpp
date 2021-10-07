@@ -195,8 +195,8 @@ int main()
     quickSort(partiallySorted,0, n-1, quick_count2);
     gettimeofday(&tend, NULL);
     runtime24 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Quicksort (Reversed Sorted) Time: " << runtime24 << endl;
-    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count2 << endl<<endl;
+    cout << "Quicksort (Partially Sorted) Time: " << runtime24 << endl;
+    cout << "-Quicksort (Partially Sorted) Counts: " << quick_count2 << endl<<endl;
     
     //Bubble Sort
     int bubbleList[n];
@@ -228,7 +228,7 @@ int main()
     bubbleSort(partiallySorted,n);
     gettimeofday(&tend, NULL);
     runtime25 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Bubble Sort (Reversed Sorted) Time: " << runtime25 << endl<<endl;
+    cout << "Bubble Sort (Partially Sorted) Time: " << runtime25 << endl<<endl;
 
     //Heap Sort
     int heapList[n];
@@ -264,7 +264,7 @@ int main()
     heapSort(partiallySorted,n, compares);
     gettimeofday(&tend, NULL);
     runtime26 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Heap Sort (Reversed Sorted) Time: " << runtime26 << endl;
+    cout << "Heap Sort (Partially Sorted) Time: " << runtime26 << endl;
     compares = 0;
 
     //Merge Sort
@@ -297,7 +297,7 @@ int main()
     mergeSort(partiallySorted,0,n-1);
     gettimeofday(&tend, NULL);
     runtime27 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Merge Sort (Reversed Sorted) Time: " << runtime27 << endl;
+    cout << "Merge Sort (Partially Sorted) Time: " << runtime27 << endl;
 
     //Selection Sort
     int selectionList[n];
@@ -332,7 +332,7 @@ int main()
     selectionSort(partiallySorted,n,selectCount3);
     gettimeofday(&tend, NULL);
     runtime28 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Selection Sort (Reversed Sorted) Time: " << runtime28 << endl;
+    cout << "Selection Sort (Partially Sorted) Time: " << runtime28 << endl;
 
     return 0;
 }
