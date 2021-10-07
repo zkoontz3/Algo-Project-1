@@ -36,7 +36,7 @@ void copy_ours(int arrA[], const int arrB[], int z);
 
 //quickSort: Colin McCarrie
 int partition (int arr[], int low, int high);
-void quickSort(int arr[], int low, int high);
+void quickSort(int arr[], int low, int high, int &compares);
 
 int main()
 {
@@ -104,13 +104,14 @@ int main()
     //Quicksort
     int listOints[n];
     copy_ours(listOints, randomArray, n);
-
+    int quick_count = 0;
     //Quicksort: Random
     gettimeofday(&tstart, NULL);
-    quickSort(listOints,0, n-1);
+    quickSort(randomArray,0, n-1, quick_count);
     gettimeofday(&tend, NULL);
     runtime3 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Random) Time: " << runtime3 << endl;
+    cout << "Quicksort (Random) Counts: " << quick_count << endl;
     
     //Quicksort: Few Unique
     gettimeofday(&tstart, NULL);
