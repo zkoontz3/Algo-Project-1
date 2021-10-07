@@ -109,6 +109,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
+    compares = 0;
 
     //Exchange Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
@@ -116,6 +117,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl<<endl;
+    compares = 0;
 
     //Exchange Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
@@ -123,6 +125,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime22 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Partially Sorted) Time: " << runtime22 << endl<<endl;
+    compares = 0;
 
     //Insertion Sort
     int insList[n];
@@ -404,20 +407,20 @@ void mergeSort(int arr[], int start, int end)
 }
     
 //Heapify Function
-void heapify(int arr[], int heapSize, int i, int counter)
+void heapify(int arr[], int n, int i, int counter)
 {
   int largest = i; //Last element becomes root
   int l = 2 * i + 1; //Left element
   int r = 2 * i + 2; //Right element
 
   //Left > Largest Case
-  if (l < heapSize && arr[l] > arr[largest])
+  if (l < n && arr[l] > arr[largest])
   {
       largest = l;
   }
 
   //Right > Largest Case
-  if (r < heapSize && arr[r] > arr[largest])
+  if (r < n && arr[r] > arr[largest])
   {
       largest = r;
   }
@@ -429,20 +432,20 @@ void heapify(int arr[], int heapSize, int i, int counter)
   }
 
   //Recursive call
-  heapify(arr, heapSize, largest);
+  heapify(arr, n, largest);
 }
 
 //Main Heap Sort Function
-void heapSort(int arr[], int heapSize, int counter)
+void heapSort(int arr[], int n, int counter)
 {
   //Builds the heap
-  for (int i = heapSize / 2 - 1; i >= 0; i--)
+  for (int i = n / 2 - 1; i >= 0; i--)
   {
-    heapify(arr, heapSize, i);
+    heapify(arr, n, i);
   }
 
   //Removes an element from heap
-  for (int i = heapSize - 1; i >= 0; i--)
+  for (int i = n - 1; i >= 0; i--)
   {
     //Moves root to the end of the array
     swap_ours(arr, 0, i);
