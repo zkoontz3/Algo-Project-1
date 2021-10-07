@@ -185,15 +185,15 @@ int main()
     gettimeofday(&tend, NULL);
     runtime17 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Reversed Sorted) Time: " << runtime17 << endl;
-    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count << endl<<endl;
-
+    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count2 << endl<<endl;
+    quick_count2 = 0;
     //Quicksort: Partially Sorted
     gettimeofday(&tstart, NULL);
     quickSort(partiallySorted,0, n-1, quick_count2);
     gettimeofday(&tend, NULL);
     runtime24 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Reversed Sorted) Time: " << runtime24 << endl;
-    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count << endl<<endl;
+    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count2 << endl<<endl;
     
     //Bubble Sort
     int bubbleList[n];
