@@ -22,7 +22,7 @@ void mergeSort(int arr[], int start, int end);
 //Heap Sort and Bubble Sort: Alex McClellan
 //Heap Sort functions from GeeksForGeeks.com 
 void heapify(int arr[], int heapSize, int i);
-void heapSort(int arr[], int heapSize);
+void heapSort(int arr[], int heapSize, int counter);
 void bubbleSort(int arr[], int arraySize);
 int* arrayGenerator(int arr[], int n);
 
@@ -233,34 +233,39 @@ int main()
     //Heap Sort
     int heapList[n];
     copy_ours(heapList, randomArray, n);
+    compares = 0;
 
     //Heap Sort: Random
     gettimeofday(&tstart, NULL);
-    heapSort(heapList,n);
+    heapSort(heapList,n, compares);
     gettimeofday(&tend, NULL);
     runtime5 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Random) Time: " << runtime5 << endl;
+    compares = 0;
 
     //Heap Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    heapSort(ptr,n);
+    heapSort(ptr,n, compares);
     gettimeofday(&tend, NULL);
     runtime12 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Few Unique) Time: " << runtime12 << endl;
+    compares = 0;
 
     //Heap Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    heapSort(reversedSorted,n);
+    heapSort(reversedSorted,n, compares);
     gettimeofday(&tend, NULL);
     runtime19 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Reversed Sorted) Time: " << runtime19 << endl;
+    compares = 0;
 
     //Heap Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    heapSort(partiallySorted,n);
+    heapSort(partiallySorted,n, compares);
     gettimeofday(&tend, NULL);
     runtime26 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Heap Sort (Reversed Sorted) Time: " << runtime26 << endl;
+    compares = 0;
 
     //Merge Sort
     int mergeList[n];
@@ -407,7 +412,7 @@ void mergeSort(int arr[], int start, int end)
 }
     
 //Heapify Function
-void heapify(int arr[], int n, int i, int counter)
+void heapify(int arr[], int n, int i)
 {
   int largest = i; //Last element becomes root
   int l = 2 * i + 1; //Left element
