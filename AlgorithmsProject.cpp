@@ -103,6 +103,7 @@ int main()
 
     //Quicksort
     int listOints[n];
+<<<<<<< Updated upstream
     copy_ours(listOints, randomArray, n);
     int quick_count = 0;
     //Quicksort: Random
@@ -192,6 +193,11 @@ int main()
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
 
+=======
+    copy(listOints, randomArray, n);
+    void quickSort(listOints,0, n-1, compares);
+    printf("%s %d %s %d /n", "List sorted with quicksort. Compares: ", compares, "Swaps: ", swaps);
+>>>>>>> Stashed changes
     return 0;
 }
 
@@ -404,10 +410,11 @@ int partition (int arr[], int low, int high)
 }
  
 //QUICK SORT FUNCTION: COLIN
-void quickSort(int arr[], int low, int high)
+void quickSort(int arr[], int low, int high, int &compares)
 {
     if (low < high)
     {
+        compares++
         int pi = partition(arr, low, high);
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
