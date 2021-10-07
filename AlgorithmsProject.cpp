@@ -58,7 +58,7 @@ int main()
     heapSize = arraySize;
     n = arraySize;
 
-    //Almost Sorted Array
+    //Few Unique Array
     int* ptr = arrayGenerator(fewUnique, n);
 
     //Make copies of randomArray to pass same array to functions
