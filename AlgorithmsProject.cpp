@@ -48,7 +48,7 @@ int main()
     cin>>size;
     cout<<endl;
 
-    int randomArray[size], fewUnique[size], reversedSorted[size];
+    int randomArray[size], fewUnique[size], reversedSorted[size], partiallySorted[1000];
 
     //Random Array Generator
     srand(time(0));
@@ -67,6 +67,15 @@ int main()
     {
       reversedSorted[k] = i;
       i--;
+    }
+
+    //Partially Sorted Array
+    ifstream inFile;
+    inFile.open("partiallysorted.txt");
+
+    for (int j = 0; j < size; j++)
+    {
+        inFile >> partiallySorted[j];
     }
 
     //Array Size Variables for Functions
