@@ -91,7 +91,7 @@ int main()
 
     //Insertion Sort: Random
     gettimeofday(&tstart, NULL);
-    insertionSort(insList, n, );
+    insertionSort(insList, n);
     gettimeofday(&tend, NULL);
     cout << "List sorted with insertion sort. Compares: " << compares << endl;
     runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
