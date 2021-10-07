@@ -97,21 +97,9 @@ int main()
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-<<<<<<< HEAD
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
     cout << "-Exchange Sort (Few Unique) Counts: " << compares << endl<<endl;
     
-=======
-    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
-
-    //Exchange Sort: Reversed Sorted
-    gettimeofday(&tstart, NULL);
-    exchangeSort(reversedSorted, n, swaps, compares);
-    gettimeofday(&tend, NULL);
-    runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl<<endl;
-
->>>>>>> f1c3ff53b129c503267f67a7ff549dfa15a1cef1
     //Insertion Sort
     int insList[n];
     copy_ours(insList, randomArray, n);
