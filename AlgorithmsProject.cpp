@@ -83,7 +83,7 @@ int main()
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
+    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
 
     //Insertion Sort
     int insList[n];
@@ -102,7 +102,7 @@ int main()
     insertionSort(ptr, n);
     gettimeofday(&tend, NULL);
     runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl;
+    cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl<<endl;
 
     //Quicksort
     int listOints[n];
@@ -122,7 +122,8 @@ int main()
     gettimeofday(&tend, NULL);
     runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Few Unique) Time: " << runtime10 << endl;
-    cout << "-Quicksort (Few Unique) Counts: " << quick_count << endl;
+    cout << "-Quicksort (Few Unique) Counts: " << quick_count << endl<<endl;
+    
     //Bubble Sort
     int bubbleList[n];
     copy_ours(bubbleList, randomArray, n);
@@ -139,7 +140,7 @@ int main()
     bubbleSort(ptr,n);
     gettimeofday(&tend, NULL);
     runtime11 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Bubble Sort (Few Unique) Time: " << runtime11 << endl;
+    cout << "Bubble Sort (Few Unique) Time: " << runtime11 << endl<<endl;
 
     //Heap Sort
     int heapList[n];
