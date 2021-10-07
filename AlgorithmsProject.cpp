@@ -14,7 +14,7 @@ using namespace std;
 
 //Selection Sort and Merge Sort: Zach Koontz
 void swap_ours(int arr[], int x, int p);
-void selectionSort(int arr[], int n);
+void selectionSort(int arr[], int n, int &count);
 void merge(int arr[], int start, int mid, int end);
 void mergeSort(int arr[], int start, int end);
 
@@ -90,7 +90,8 @@ int main()
     cout << "List sorted with exchange sort. Compares: " << compares << " swaps: " << swaps << endl;
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Random) Time: " << runtime1 << endl;
-    
+    cout << "-Exchange Sort (Random) Counts: " << compares << endl;
+    compares = 0;
     //Exchange Sort: Few Unique
     gettimeofday(&tstart, NULL);
     exchangeSort(ptr, n, swaps, compares);
@@ -98,7 +99,7 @@ int main()
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
 
-    //Exchange Sort: Reverses Sorted
+    //Exchange Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
     exchangeSort(reversedSorted, n, swaps, compares);
     gettimeofday(&tend, NULL);
@@ -239,17 +240,17 @@ int main()
     //Selection Sort
     int selectionList[n];
     copy_ours(selectionList, randomArray, n);
-
+    int selectCount = 0;
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
-    selectionSort(selectionList,n);
+    selectionSort(selectionList,n, selectCount);
     gettimeofday(&tend, NULL);
     runtime7 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Random) Time: " << runtime7 << endl;
 
     //Selection Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    selectionSort(ptr,n);
+    selectionSort(ptr,n, selectCount);
     gettimeofday(&tend, NULL);
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
@@ -272,7 +273,7 @@ void swap_ours(int arr[], int first, int second) {
 }
 
 //selection sort: Zach Koontz
-void selectionSort(int arr[], int n)
+void selectionSort(int arr[], int n, int &count)
 {
     int i, j, minIndex;
     for (i = 0; i < n-1; i++)
