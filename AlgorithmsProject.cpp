@@ -26,7 +26,7 @@ void bubbleSort(int arr[], int arraySize);
 int* arrayGenerator(int arr[], int n);
 
 //Exchange Sort: Stephen  
-void exchangeSort(int arr[], int z, int swaps, int compares);
+void exchangeSort(int arr[], int z, int &swaps, int &compares);
 
 //Insertion Sort: Brad 
 void insertionSort(int arr[], int n);
@@ -78,7 +78,8 @@ int main()
 
     //Make copies of randomArray to pass same array to functions
     //Exchange sort: Stephen
-    int &swaps, &compares;
+    int swaps = 0;
+    int compares = 0;
     int exgList[n];
     copy_ours(exgList, randomArray, n);
 
@@ -103,7 +104,7 @@ int main()
 
     //Insertion Sort: Random
     gettimeofday(&tstart, NULL);
-    insertionSort(insList, n, );
+    insertionSort(insList, n);
     gettimeofday(&tend, NULL);
     cout << "List sorted with insertion sort. Compares: " << compares << endl;
     runtime2 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
@@ -355,7 +356,7 @@ void bubbleSort(int arr[], int arraySize)
 }
 
 //Exchange Sort: Stephen 
-void exchangeSort(int arr[], int z, int swaps, int compares)
+void exchangeSort(int arr[], int z, int &swaps, int &compares)
 {
     int length = z;
     int n;
