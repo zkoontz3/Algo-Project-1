@@ -108,7 +108,7 @@ int main()
     exchangeSort(ptr, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl<<endl;
+    cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
     compares = 0;
 
     //Exchange Sort: Reversed Sorted
@@ -116,7 +116,7 @@ int main()
     exchangeSort(reversedSorted, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl<<endl;
+    cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl;
     compares = 0;
 
     //Exchange Sort: Partially Sorted
@@ -144,14 +144,14 @@ int main()
     insertionSort(ptr, n);
     gettimeofday(&tend, NULL);
     runtime9 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl<<endl;
+    cout << "Insertion Sort (Few Unique) Time: " << runtime9 << endl;
 
     //Insertion Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
     insertionSort(reversedSorted, n);
     gettimeofday(&tend, NULL);
     runtime16 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Insertion Sort (Reversed Sorted) Time: " << runtime16 << endl<<endl;
+    cout << "Insertion Sort (Reversed Sorted) Time: " << runtime16 << endl;
 
     //Insertion Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
@@ -180,7 +180,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime10 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Few Unique) Time: " << runtime10 << endl;
-    cout << "-Quicksort (Few Unique) Counts: " << quick_count2 << endl<<endl;
+    cout << "-Quicksort (Few Unique) Counts: " << quick_count2 << endl;
 
     //Quicksort: Reversed Sorted
     gettimeofday(&tstart, NULL);
@@ -188,7 +188,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime17 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Quicksort (Reversed Sorted) Time: " << runtime17 << endl;
-    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count2 << endl<<endl;
+    cout << "-Quicksort (Reversed Sorted) Counts: " << quick_count2 << endl;
     quick_count2 = 0;
     //Quicksort: Partially Sorted
     gettimeofday(&tstart, NULL);
@@ -221,7 +221,7 @@ int main()
     bubbleSort(reversedSorted,n);
     gettimeofday(&tend, NULL);
     runtime18 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Bubble Sort (Reversed Sorted) Time: " << runtime18 << endl<<endl;
+    cout << "Bubble Sort (Reversed Sorted) Time: " << runtime18 << endl;
 
     //Bubble Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
@@ -264,7 +264,7 @@ int main()
     heapSort(partiallySorted,n, compares);
     gettimeofday(&tend, NULL);
     runtime26 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Heap Sort (Partially Sorted) Time: " << runtime26 << endl;
+    cout << "Heap Sort (Partially Sorted) Time: " << runtime26 << endl<<endl;
     compares = 0;
 
     //Merge Sort
@@ -297,7 +297,7 @@ int main()
     mergeSort(partiallySorted,0,n-1);
     gettimeofday(&tend, NULL);
     runtime27 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
-    cout << "Merge Sort (Partially Sorted) Time: " << runtime27 << endl;
+    cout << "Merge Sort (Partially Sorted) Time: " << runtime27 << endl<<endl;
 
     //Selection Sort
     int selectionList[n];
