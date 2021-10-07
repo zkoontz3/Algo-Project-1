@@ -40,13 +40,16 @@ void quickSort(int arr[], int low, int high, int &compares);
 
 int main()
 {
-    int randomArray[1000], fewUnique[1000], arraySize = 0, heapSize, n;
+    int arraySize = 0, heapSize, n;
     float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8, runtime9, runtime10, runtime11, runtime12, runtime13, runtime14;
     struct timeval tstart, tend;
     int size;
     cout<<"Enter the size of the data set: ";
     cin>>size;
     cout<<endl;
+
+    int randomArray[size], fewUnique[size], reversedSorted[size];
+
     //Random Array Generator
     srand(time(0));
 
@@ -57,6 +60,15 @@ int main()
         arraySize++;
     }
     
+    //Reverse Sorted Array
+    int i = size;
+
+    for (int k = 0; k < size; k++)
+    {
+      i = reversedSorted[k];
+      i--;
+    }
+
     //Array Size Variables for Functions
     heapSize = arraySize;
     n = arraySize;
