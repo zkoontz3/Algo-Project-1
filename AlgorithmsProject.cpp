@@ -410,7 +410,8 @@ void selectionSort(int arr[], int n, int &swaps, int &compares)
           }
         }
         swap_ours(arr, minIndex, i);
-        swaps++;
+        if(minIndex != i)
+          swaps++;
     }
 }   
 
