@@ -15,29 +15,29 @@ using namespace std;
 
 //Selection Sort and Merge Sort: Zach Koontz
 void swap_ours(int arr[], int x, int p);
-void selectionSort(int arr[], int n, int swaps, int compares);
+void selectionSort(int arr[], int n, int &swaps, int &compares);
 void merge(int arr[], int start, int mid, int end);
-void mergeSort(int arr[], int start, int end, int compares);
+void mergeSort(int arr[], int start, int end, int &compares);
 
 //Heap Sort and Bubble Sort: Alex McClellan
 //Heap Sort functions from GeeksForGeeks.com 
-void heapify(int arr[], int heapSize, int i, int compares);
-void heapSort(int arr[], int heapSize, int compares);
-void bubbleSort(int arr[], int arraySize, int compares);
+void heapify(int arr[], int heapSize, int i, int &compares);
+void heapSort(int arr[], int heapSize, int &compares);
+void bubbleSort(int arr[], int arraySize, int &compares);
 int* arrayGenerator(int arr[], int n);
 
 //Exchange Sort: Stephen  
-void exchangeSort(int arr[], int z, int swaps, int compares);
+void exchangeSort(int arr[], int z, int &swaps, int &compares);
 
 //Insertion Sort: Brad 
-void insertionSort(int arr[], int n, int compares);
+void insertionSort(int arr[], int n, int &compares);
 
 //Array copy_ours function: Stephen
 void copy_ours(int arrA[], const int arrB[], int z);
 
 //quickSort: Colin McCarrie
 int partition (int arr[], int low, int high);
-void quickSort(int arr[], int low, int high, int compares);
+void quickSort(int arr[], int low, int high, int &compares);
 
 int main()
 {
@@ -359,7 +359,7 @@ int main()
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
     cout << "-Selection Sort (Few Unique) Counts: " << compares << endl;
-    cout << "-Selection Sort (Few Unique) Counts: " << swaps << endl;
+    cout << "-Selection Sort (Few Unique) Swaps: " << swaps << endl;
     compares = 0;
     swaps = 0;
 
@@ -395,7 +395,7 @@ void swap_ours(int arr[], int first, int second) {
 }
 
 //selection sort: Zach Koontz
-void selectionSort(int arr[], int n, int swaps, int compares)
+void selectionSort(int arr[], int n, int &swaps, int &compares)
 {
     int i, j, minIndex;
     for (i = 0; i < n-1; i++)
@@ -455,7 +455,7 @@ void merge(int arr[], int start, int mid, int end)
 }
 
 //Merge Sort: Zach Koontz
-void mergeSort(int arr[], int start, int end, int compares)
+void mergeSort(int arr[], int start, int end, int &compares)
 {
   if(start < end){
      int mid = start + (end - start)/2;
@@ -467,7 +467,7 @@ void mergeSort(int arr[], int start, int end, int compares)
 }
     
 //Heapify Function
-void heapify(int arr[], int n, int i, int compares)
+void heapify(int arr[], int n, int i, int &compares)
 {
   int largest = i; //Last element becomes root
   int l = 2 * i + 1; //Left element
@@ -497,7 +497,7 @@ void heapify(int arr[], int n, int i, int compares)
 }
 
 //Main Heap Sort Function
-void heapSort(int arr[], int n, int compares)
+void heapSort(int arr[], int n, int &compares)
 {
   //Builds the heap
   for (int i = n / 2 - 1; i >= 0; i--)
@@ -517,7 +517,7 @@ void heapSort(int arr[], int n, int compares)
 }
 
 //Bubble Sort
-void bubbleSort(int arr[], int arraySize, int compares)
+void bubbleSort(int arr[], int arraySize, int &compares)
 {
   int temp;
 
@@ -538,7 +538,7 @@ void bubbleSort(int arr[], int arraySize, int compares)
 }
 
 //Exchange Sort: Stephen 
-void exchangeSort(int arr[], int z, int swaps, int compares)
+void exchangeSort(int arr[], int z, int &swaps, int &compares)
 {
     int length = z;
     int n;
@@ -558,7 +558,7 @@ void exchangeSort(int arr[], int z, int swaps, int compares)
 }
 
 //Insertion Sort: Brad 
-void insertionSort(int arr[], int n, int compares)
+void insertionSort(int arr[], int n, int &compares)
 {
     int i, key, j;
     for (i = 1; i < n; i++)
@@ -602,7 +602,7 @@ int partition (int arr[], int low, int high)
 }
  
 //QUICK SORT FUNCTION: COLIN
-void quickSort(int arr[], int low, int high, int compares)
+void quickSort(int arr[], int low, int high, int &compares)
 {
     if (low < high)
     {
