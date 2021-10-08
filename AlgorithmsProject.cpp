@@ -254,7 +254,7 @@ int main()
     gettimeofday(&tend, NULL);
     runtime25 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Bubble Sort (Partially Sorted) Time: " << runtime25 << endl;
-    cout << "-Bubble Sort (Random) Counts: " << compares << endl<<endl;
+    cout << "-Bubble Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
     //Heap Sort
