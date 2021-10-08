@@ -15,19 +15,19 @@ using namespace std;
 
 //Selection Sort and Merge Sort: Zach Koontz
 void swap_ours(int arr[], int x, int p);
-void selectionSort(int arr[], int n, int compares);
+void selectionSort(int arr[], int n, int swaps, int compares);
 void merge(int arr[], int start, int mid, int end);
 void mergeSort(int arr[], int start, int end, int compares);
 
 //Heap Sort and Bubble Sort: Alex McClellan
 //Heap Sort functions from GeeksForGeeks.com 
-void heapify(int arr[], int heapSize, int i);
-void heapSort(int arr[], int heapSize, int counter);
+void heapify(int arr[], int heapSize, int i, int compares);
+void heapSort(int arr[], int heapSize, int compares);
 void bubbleSort(int arr[], int arraySize, int compares);
 int* arrayGenerator(int arr[], int n);
 
 //Exchange Sort: Stephen  
-void exchangeSort(int arr[], int z, int &swaps, int compares);
+void exchangeSort(int arr[], int z, int swaps, int compares);
 
 //Insertion Sort: Brad 
 void insertionSort(int arr[], int n, int compares);
@@ -100,7 +100,9 @@ int main()
     runtime1 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Random) Time: " << runtime1 << endl;
     cout << "-Exchange Sort (Random) Counts: " << compares << endl;
+    cout << "-Exchange Sort (Random) Swaps: " << swaps << endl;
     compares = 0;
+    swaps = 0;
 
     //Exchange Sort: Few Unique
     gettimeofday(&tstart, NULL);
@@ -109,7 +111,9 @@ int main()
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
     cout << "-Exchange Sort (Few Unique) Counts: " << compares << endl;
+    cout << "-Exchange Sort (Few Unique) Swaps: " << swaps << endl;
     compares = 0;
+    swaps = 0;
 
     //Exchange Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
@@ -118,7 +122,9 @@ int main()
     runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl;
     cout << "-Exchange Sort (Reversed Sorted) Counts: " << compares << endl;
+    cout << "-Exchange Sort (Reversed Sorted) Swaps: " << swaps << endl;
     compares = 0;
+    swaps = 0;
 
     //Exchange Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
@@ -126,8 +132,10 @@ int main()
     gettimeofday(&tend, NULL);
     runtime22 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Partially Sorted) Time: " << runtime22 << endl;
-    cout << "-Exchange Sort (Partially Sorted) Counts: " << compares << endl<<endl;
+    cout << "-Exchange Sort (Partially Sorted) Counts: " << compares << endl;
+    cout << "-Exchange Sort (Partially Sorted) Swaps: " << swaps << endl<<endl;
     compares = 0;
+    swaps = 0;
 
     //Insertion Sort
     int insList[n];
@@ -335,38 +343,45 @@ int main()
 
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
-    selectionSort(selectionList,n, compares);
+    selectionSort(selectionList,n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime7 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Random) Time: " << runtime7 << endl;
     cout << "-Selection Sort (Random) Counts: " << compares << endl;
+    cout << "-Selection Sort (Random) Swaps: " << swaps << endl;
     compares = 0;
+    swaps = 0;
 
     //Selection Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    selectionSort(ptr,n, compares);
+    selectionSort(ptr,n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime14 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Few Unique) Time: " << runtime14 << endl;
     cout << "-Selection Sort (Few Unique) Counts: " << compares << endl;
+    cout << "-Selection Sort (Few Unique) Counts: " << swaps << endl;
     compares = 0;
+    swaps = 0;
 
     //Selection Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    selectionSort(reversedSorted,n,compares);
+    selectionSort(reversedSorted,n,swaps,compares);
     gettimeofday(&tend, NULL);
     runtime21 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Reversed Sorted) Time: " << runtime21 << endl;
     cout << "-Selection Sort (Reversed Sorted) Counts: " << compares << endl;
+    cout << "-Selection Sort (Reversed Sorted) Swaps: " << swaps << endl;
     compares = 0;
+    swaps = 0;
 
     //Selection Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    selectionSort(partiallySorted,n,compares);
+    selectionSort(partiallySorted,n,swaps,compares);
     gettimeofday(&tend, NULL);
     runtime28 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Selection Sort (Partially Sorted) Time: " << runtime28 << endl;
-    cout << "-Selection Sort (Partially Sorted) Counts: " << compares << endl<<endl;
+    cout << "-Selection Sort (Partially Sorted) Counts: " << compares << endl;
+    cout << "-Selection Sort (Partially Sorted) Swaps: " << swaps << endl<<endl;
     compares = 0;
 
     return 0;
@@ -380,7 +395,7 @@ void swap_ours(int arr[], int first, int second) {
 }
 
 //selection sort: Zach Koontz
-void selectionSort(int arr[], int n, int compares)
+void selectionSort(int arr[], int n, int swaps, int compares)
 {
     int i, j, minIndex;
     for (i = 0; i < n-1; i++)
@@ -388,8 +403,12 @@ void selectionSort(int arr[], int n, int compares)
         minIndex = i;
         for (j = i+1; j < n; j++)
         if (arr[j] < arr[minIndex])
+        {
             minIndex = j;
+            compares++;
+        }
         swap_ours(arr, minIndex, i);
+        swaps++;
     }
 }   
 
@@ -448,7 +467,7 @@ void mergeSort(int arr[], int start, int end, int compares)
 }
     
 //Heapify Function
-void heapify(int arr[], int n, int i)
+void heapify(int arr[], int n, int i, int compares)
 {
   int largest = i; //Last element becomes root
   int l = 2 * i + 1; //Left element
@@ -458,29 +477,32 @@ void heapify(int arr[], int n, int i)
   if (l < n && arr[l] > arr[largest])
   {
       largest = l;
+      compares++;
   }
 
   //Right > Largest Case
   if (r < n && arr[r] > arr[largest])
   {
       largest = r;
+      compares++;
   }
 
   //If Largest isn't the root
   if (largest != i)
   {
     swap(arr[i],arr[largest]);
-    heapify(arr, n, largest);
+    compares++;
+    heapify(arr, n, largest, compares);
   }
 }
 
 //Main Heap Sort Function
-void heapSort(int arr[], int n, int counter)
+void heapSort(int arr[], int n, int compares)
 {
   //Builds the heap
   for (int i = n / 2 - 1; i >= 0; i--)
   {
-    heapify(arr, n, i);
+    heapify(arr, n, i, compares);
   }
 
   //Removes an element from heap
@@ -490,9 +512,8 @@ void heapSort(int arr[], int n, int counter)
     swap(arr[0], arr[i]);
 
     //Call max heapify on reduced heap
-    heapify(arr, i, 0);
+    heapify(arr, i, 0, compares);
   }
-  counter++;
 }
 
 //Bubble Sort
@@ -517,7 +538,7 @@ void bubbleSort(int arr[], int arraySize, int compares)
 }
 
 //Exchange Sort: Stephen 
-void exchangeSort(int arr[], int z, int &swaps, int compares)
+void exchangeSort(int arr[], int z, int swaps, int compares)
 {
     int length = z;
     int n;
