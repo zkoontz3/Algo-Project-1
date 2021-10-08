@@ -402,10 +402,12 @@ void selectionSort(int arr[], int n, int &swaps, int &compares)
     {
         minIndex = i;
         for (j = i+1; j < n; j++)
-        if (arr[j] < arr[minIndex])
         {
+          compares++;
+          if (arr[j] < arr[minIndex])
+          {
             minIndex = j;
-            compares++;
+          }
         }
         swap_ours(arr, minIndex, i);
         swaps++;
@@ -571,6 +573,7 @@ void insertionSort(int arr[], int n, int &compares)
             j = j - 1;
             compares++;
         }
+        compares++;
         arr[j + 1] = key;
     }
 }
