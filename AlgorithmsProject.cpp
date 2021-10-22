@@ -10,6 +10,7 @@ Algorithms Project Code
 #include<array>
 // #include<ctime>
 #include<sys/time.h>
+#include<sstream>
 
 using namespace std;
 
@@ -71,20 +72,30 @@ int main()
     }
 
     //Partially Sorted Array
-    ifstream inFile;
+    ifstream inFile, inFile2;
     inFile.open("partiallysorted.txt");
 
     for (int j = 0; j < size; j++)
     {
         inFile >> partiallySorted[j];
     }
+    inFile.close();
 
-    //Dataset
-    inFile.open("data.txt");
+    //Dataset inFile
+    int l = 0;
+    char cNum[1000];
 
-    for (int j = 0; j < size; j++)
+    inFile2.open("data.txt", ifstream::in);
+
+    if (inFile2.is_open())
     {
-      inFile >> inFileArray[j];
+      while (inFile2.good())
+      {
+        inFile2.getline(cNum, 256, ',');
+        inFileArray[l] = atoi(cNum);
+        l++;
+      }
+      inFile2.close();
     }
 
     //Array Size Variables for Functions
