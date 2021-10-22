@@ -78,6 +78,7 @@ int main()
     {
         inFile >> partiallySorted[j];
     }
+    inFile.close("partiallysorted.txt");
 
     //Array Size Variables for Functions
     heapSize = arraySize;
@@ -90,8 +91,12 @@ int main()
     //Exchange sort: Stephen
     int swaps = 0;
     int compares = 0;
-    int exgList[n];
+    int exgList[n], exgFew[n], exgReversed[n], exgPartially[n];
+  
     copy_ours(exgList, randomArray, n);
+    copy_ours(exgFew, fewUnique, n);
+    copy_ours(exgReversed, reversedSorted, n);
+    copy_ours(exgPartially, partiallySorted, n);
 
     //Exchange Sort: Random
     gettimeofday(&tstart, NULL);
@@ -106,7 +111,7 @@ int main()
 
     //Exchange Sort: Few Unique
     gettimeofday(&tstart, NULL);
-    exchangeSort(ptr, n, swaps, compares);
+    exchangeSort(exgFew, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime8 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Few Unique) Time: " << runtime8 << endl;
@@ -117,7 +122,7 @@ int main()
 
     //Exchange Sort: Reversed Sorted
     gettimeofday(&tstart, NULL);
-    exchangeSort(reversedSorted, n, swaps, compares);
+    exchangeSort(exgReversed, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime15 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Reversed Sorted) Time: " << runtime15 << endl;
@@ -128,7 +133,7 @@ int main()
 
     //Exchange Sort: Partially Sorted
     gettimeofday(&tstart, NULL);
-    exchangeSort(partiallySorted, n, swaps, compares);
+    exchangeSort(exgPartially, n, swaps, compares);
     gettimeofday(&tend, NULL);
     runtime22 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
     cout << "Exchange Sort (Partially Sorted) Time: " << runtime22 << endl;
