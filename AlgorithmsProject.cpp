@@ -49,7 +49,7 @@ int main()
     cin>>size;
     cout<<endl;
 
-    int randomArray[size], fewUnique[size], reversedSorted[size], partiallySorted[1000];
+    int randomArray[size], fewUnique[size], reversedSorted[size], partiallySorted[1000], inFileArray[size];
 
     //Random Array Generator
     srand(time(0));
@@ -79,6 +79,13 @@ int main()
         inFile >> partiallySorted[j];
     }
 
+    //Dataset
+    inFile.open("data.txt");
+
+    for (int j = 0; j < size; j++)
+    {
+      inFile >> inFileArray[j];
+    }
 
     //Array Size Variables for Functions
     heapSize = arraySize;
