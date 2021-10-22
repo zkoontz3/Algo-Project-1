@@ -42,7 +42,7 @@ void quickSort(int arr[], int low, int high, int &compares);
 int main()
 {
     int arraySize = 0, heapSize, n;
-    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8, runtime9, runtime10, runtime11, runtime12, runtime13, runtime14, runtime15, runtime16, runtime17, runtime18, runtime19, runtime20, runtime21, runtime22, runtime23, runtime24, runtime25, runtime26, runtime27, runtime28;
+    float runtime1, runtime2, runtime3, runtime4, runtime5, runtime6, runtime7, runtime8, runtime9, runtime10, runtime11, runtime12, runtime13, runtime14, runtime15, runtime16, runtime17, runtime18, runtime19, runtime20, runtime21, runtime22, runtime23, runtime24, runtime25, runtime26, runtime27, runtime28, runtime29, runtime30, runtime31, runtime32, runtime33, runtime34, runtime35;
     struct timeval tstart, tend;
     int size;
     cout<<"Enter the size of the data set: ";
@@ -98,12 +98,13 @@ int main()
     //Exchange sort: Stephen
     int swaps = 0;
     int compares = 0;
-    int exgList[n], exgFew[n], exgReversed[n], exgPartially[n];
+    int exgList[n], exgFew[n], exgReversed[n], exgPartially[n], exgInFile[n];
   
     copy_ours(exgList, randomArray, n);
     copy_ours(exgFew, fewUnique, n);
     copy_ours(exgReversed, reversedSorted, n);
     copy_ours(exgPartially, partiallySorted, n);
+    copy_ours(exgInFile, inFileArray, n);
 
     //Exchange Sort: Random
     gettimeofday(&tstart, NULL);
@@ -149,9 +150,21 @@ int main()
     compares = 0;
     swaps = 0;
 
+    //Exchange Sort: Dataset
+    gettimeofday(&tstart, NULL);
+    exchangeSort(exgInFile, n, swaps, compares);
+    gettimeofday(&tend, NULL);
+    runtime29 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Exchange Sort (Dataset) Time: " << runtime29 << endl;
+    cout << "-Exchange Sort (Dataset) Counts: " << compares << endl;
+    cout << "-Exchange Sort (Dataset) Swaps: " << swaps << endl<<endl;
+    compares = 0;
+    swaps = 0;
+
     //Insertion Sort
-    int insList[n];
+    int insList[n], insInFile[n];
     copy_ours(insList, randomArray, n);
+    copy_ours(insInFile, inFileArray, n);
 
     //Insertion Sort: Random
     gettimeofday(&tstart, NULL);
@@ -189,9 +202,19 @@ int main()
     cout << "-Insertion Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
+    //Insertion Sort: Dataset
+    gettimeofday(&tstart, NULL);
+    insertionSort(insInFile, n, compares);
+    gettimeofday(&tend, NULL);
+    runtime30 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Insertion Sort (Dataset) Time: " << runtime30 << endl;
+    cout << "-Insertion Sort (Dataset) Counts: " << compares << endl<<endl;
+    compares = 0;
+
     //Quicksort
-    int listOints[n];
+    int listOints[n], listInFile[n];
     copy_ours(listOints, randomArray, n);
+    copy_ours(listInFile, inFileArray, n);
 
     //Quicksort: Random
     gettimeofday(&tstart, NULL);
@@ -228,10 +251,21 @@ int main()
     cout << "Quicksort (Partially Sorted) Time: " << runtime24 << endl;
     cout << "-Quicksort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
+
+    //Quicksort: Dataset
+    gettimeofday(&tstart, NULL);
+    quickSort(listInFile,0, n-1, compares);
+    gettimeofday(&tend, NULL);
+    runtime31 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Quicksort (Dataset) Time: " << runtime31 << endl;
+    cout << "-Quicksort (Dataset) Counts: " << compares << endl<<endl;
+    compares = 0;
+    
     
     //Bubble Sort
-    int bubbleList[n];
+    int bubbleList[n], bubbleInFile[n];
     copy_ours(bubbleList, randomArray, n);
+    copy_ours(bubbleInFile, inFileArray, n);
 
     //Bubble Sort: Random
     gettimeofday(&tstart, NULL);
@@ -269,9 +303,19 @@ int main()
     cout << "-Bubble Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
+    //Bubble Sort: Dataset
+    gettimeofday(&tstart, NULL);
+    bubbleSort(bubbleInFile,n,compares);
+    gettimeofday(&tend, NULL);
+    runtime32 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Bubble Sort (Dataset) Time: " << runtime32 << endl;
+    cout << "-Bubble Sort (Dataset) Counts: " << compares << endl<<endl;
+    compares = 0;
+
     //Heap Sort
-    int heapList[n];
+    int heapList[n], heapInFile[n];
     copy_ours(heapList, randomArray, n);
+    copy_ours(heapInFile, inFileArray, n);
 
     //Heap Sort: Random
     gettimeofday(&tstart, NULL);
@@ -309,9 +353,19 @@ int main()
     cout << "-Heap Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
+    //Heap Sort: Dataset
+    gettimeofday(&tstart, NULL);
+    heapSort(heapInFile,n, compares);
+    gettimeofday(&tend, NULL);
+    runtime33 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Heap Sort (Dataset) Time: " << runtime33 << endl;
+    cout << "-Heap Sort (Dataset) Counts: " << compares << endl<<endl;
+    compares = 0;
+
     //Merge Sort
-    int mergeList[n];
+    int mergeList[n], mergeInFile[n];
     copy_ours(mergeList, randomArray, n);
+    copy_ours(mergeInFile, inFileArray, n);
 
     //Merge Sort: Random
     gettimeofday(&tstart, NULL);
@@ -349,9 +403,19 @@ int main()
     cout << "-Merge Sort (Partially Sorted) Counts: " << compares << endl<<endl;
     compares = 0;
 
+    //Merge Sort: Dataset
+    gettimeofday(&tstart, NULL);
+    mergeSort(mergeInFile,0,n-1,compares);
+    gettimeofday(&tend, NULL);
+    runtime34 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Merge Sort (Dataset) Time: " << runtime34 << endl;
+    cout << "-Merge Sort (Dataset) Counts: " << compares << endl<<endl;
+    compares = 0;
+
     //Selection Sort
-    int selectionList[n];
+    int selectionList[n], selectionInFile[n];
     copy_ours(selectionList, randomArray, n);
+    copy_ours(selectionInFile, inFileArray, n);
 
     //Selection Sort: Random
     gettimeofday(&tstart, NULL);
@@ -394,6 +458,16 @@ int main()
     cout << "Selection Sort (Partially Sorted) Time: " << runtime28 << endl;
     cout << "-Selection Sort (Partially Sorted) Counts: " << compares << endl;
     cout << "-Selection Sort (Partially Sorted) Swaps: " << swaps << endl<<endl;
+    compares = 0;
+
+    //Selection Sort: Dataset
+    gettimeofday(&tstart, NULL);
+    selectionSort(selectionInFile,n,swaps,compares);
+    gettimeofday(&tend, NULL);
+    runtime35 = tend.tv_sec - tstart.tv_sec + (tend.tv_usec - tstart.tv_usec)/ 1.e3;
+    cout << "Selection Sort (Dataset) Time: " << runtime35 << endl;
+    cout << "-Selection Sort (Dataset) Counts: " << compares << endl;
+    cout << "-Selection Sort (Dataset) Swaps: " << swaps << endl<<endl;
     compares = 0;
 
     return 0;
