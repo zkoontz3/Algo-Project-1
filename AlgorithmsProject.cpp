@@ -78,7 +78,7 @@ int main()
     {
         inFile >> partiallySorted[j];
     }
-    inFile.close("partiallysorted.txt");
+
 
     //Array Size Variables for Functions
     heapSize = arraySize;
